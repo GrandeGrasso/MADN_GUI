@@ -38,7 +38,7 @@ public class DialogFenster {
     	   backImgPanel.setLayout(null);
            backImgPanel.setOpaque(false);
            backImgPanel.add(button);        
-           button.setBounds(80, 220, 120, 50);
+           button.setBounds(80, 220, 150, 50);
            backImgPanel.setBounds(0,0,400,300);
     	 
     	   

@@ -87,7 +87,7 @@ public class ArtAuswahlDialog {
 		spielStarten = new JButton("Spiel starten");
 		spielStarten.setFont(new Font("Arial", Font.BOLD, 12));
 		spielStarten.setBackground(Color.WHITE);
-		spielStarten.setBounds(310, 200, 120, 30);	
+		spielStarten.setBounds(310, 200, 150, 30);	
 	}
 	
 	
