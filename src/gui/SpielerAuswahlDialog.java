@@ -35,7 +35,7 @@ public class SpielerAuswahlDialog {
 	
 	    public SpielerAuswahlDialog() {
 	    	
-	    frame = new JFrame("Mensch ärgere dich nicht");	
+	    frame = new JFrame("Mensch aergere dich nicht");	
 	    frame.setSize(300, 100);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        

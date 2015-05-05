@@ -13,12 +13,12 @@ public class DialogFenster {
 
 		JButton button = new JButton("Jetzt spielen");
         JFrame fra;
-        JLabel backImgPanel = new JLabel(new ImageIcon("2würfel.jpg"));
+        JLabel backImgPanel = new JLabel(new ImageIcon("2wuerfel.jpg"));
         
         
         public DialogFenster(){
         
-        	fra=new JFrame("Mensch ärgere dich nicht");
+        	fra=new JFrame("Mensch aergere dich nicht");
         	 fra.setSize(300, 300);
              fra.setLocationRelativeTo(null);
              fra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

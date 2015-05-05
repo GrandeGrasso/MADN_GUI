@@ -38,7 +38,7 @@ public class ArtAuswahlDialog {
 	
 	public ArtAuswahlDialog() {
 		
-		frame=new JFrame("Mensch ärgere dich nicht");
+		frame=new JFrame("Mensch aergere dich nicht");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 290);
 		
@@ -62,7 +62,7 @@ public class ArtAuswahlDialog {
 		spieloptionen.setForeground(Color.black);
 //		
 		
-		spielTypFrage = new JLabel("Wähle eine Art");
+		spielTypFrage = new JLabel("Waehle eine Art");
 		spielTypFrage.setBounds(50, 40, 250, 20);
 		
 		artAuswahl = new JComboBox(art);
@@ -76,7 +76,7 @@ public class ArtAuswahlDialog {
 		nameEingabe = new TextField();
 		nameEingabe.setBounds(300, 90, 120, 20);
 		
-		farben = new JLabel("Wähle eine Farbe");
+		farben = new JLabel("Waehle eine Farbe");
 		farben.setBounds(50, 140, 250, 20);
 		
 		farbAuswahl = new JComboBox(farbe);

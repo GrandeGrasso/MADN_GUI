@@ -15,12 +15,12 @@ public class GuiSpielbrett {
 	
 	JFrame frame ;
 	JLabel lab = new JLabel(new ImageIcon("brett1.jpg"));
-	JLabel lab2 = new JLabel(new ImageIcon("würfelSpielbrett.jpg"));
+	JLabel lab2 = new JLabel(new ImageIcon("wuerfelSpielbrett.jpg"));
 	 
 
 	
 	
-	  private JButton wuerfeln=new JButton("würfeln"); 
+	  private JButton wuerfeln=new JButton("wuerfeln"); 
 	  private JButton laufen=new JButton("laufen"); 
 	  private JButton figurZiehen=new JButton("figurZiehen"); 
 	  private JButton zugBeenden=new JButton("zugBeenden"); 
@@ -30,7 +30,7 @@ public class GuiSpielbrett {
 	
 	public GuiSpielbrett() {
 		
-		  frame=new JFrame("Mensch ärgere dich nicht"); 
+		  frame=new JFrame("Mensch aergere dich nicht"); 
 		  
 		  
 //		  erstelle();
