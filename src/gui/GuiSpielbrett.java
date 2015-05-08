@@ -116,7 +116,7 @@ public class GuiSpielbrett{
 		
 		
 		imageBrett = new JLabel(new ImageIcon("brett1.jpg")); 		
-		imageWuerfel = new JLabel(new ImageIcon("würfel5.jpg"));
+		imageWuerfel = new JLabel(new ImageIcon("wuerfel5.jpg"));
 		
 		imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 		
 		imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
