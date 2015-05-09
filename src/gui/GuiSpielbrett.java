@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -20,7 +23,7 @@ import javax.swing.SwingConstants;
 public class GuiSpielbrett{
 
 	
-	private JFrame frame = new JFrame();
+	JFrame frame = new JFrame();
 	private JLabel imageBrett; 		
 	private JLabel imageWuerfel;	
 	private JLabel lblHeader;
@@ -37,6 +40,12 @@ public class GuiSpielbrett{
 	private JLabel imageFigurGelb;
 	private JLabel imageFigurGruen;
 	
+
+	
+	
+	private static GuiSpielbrett self=null;
+	
+	
 	
 	public GuiSpielbrett(){
 	
@@ -45,14 +54,14 @@ public class GuiSpielbrett{
 		frame.setTitle("Mensch ärgere dich nicht"); 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+//		addListener(); 
 		createWidgets();
 		addWidgets();
+
 		
 	
-		
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
 		frame.setVisible(true);
 	}
 	
@@ -83,12 +92,15 @@ public class GuiSpielbrett{
 		pnlAdd.add(imageFigurGruen);
 		
 		
+		
+		
 		pnlAdd.setMaximumSize(pnlAdd.getPreferredSize());
 		pnlAdd.setAlignmentX(frame.LEFT_ALIGNMENT);
 		
 	
 		
 		pnlRight.add(pnlAdd);
+		
 		pnlRight.add(Box.createVerticalGlue());
 		
 		
@@ -158,16 +170,20 @@ public class GuiSpielbrett{
 		pnlDown= new JPanel();
 		pnlDown.setPreferredSize(new Dimension(0,50));
 		pnlDown.setBackground(Color.BLACK);
-		
-		
-		
+			
 		
 	}
 	
-	
-	
-	
-	
+
+//	private void addListener() {
+//		btnLaufen.addActionListener(new EventHandler(this));
+//		btnLaufen.setActionCommand("laufen");
+//		btnWuerfel.addActionListener(new EventHandler(this));
+//		btnWuerfel.setActionCommand("wuerfeln");
+//		btnFertig.addActionListener(new EventHandler(this));
+//		btnFertig.setActionCommand("beenden");
+//	}
+//	
 
 	
 	

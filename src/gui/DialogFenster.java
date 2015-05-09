@@ -14,18 +14,21 @@ public class DialogFenster {
 		JButton button = new JButton("Jetzt spielen");
         JFrame fra;
         JLabel backImgPanel = new JLabel(new ImageIcon("2wuerfel.jpg"));
-        
+    	private EventHandler event;
         
         public DialogFenster(){
         
-        	fra=new JFrame("Mensch aergere dich nicht");
+        	fra=new JFrame("Mensch ärgere dich nicht");
         	 fra.setSize(300, 300);
              fra.setLocationRelativeTo(null);
              fra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              
+             
+             event = new EventHandler(this);
              erstelle();
              hinzufuegen();
              addListener();
+            
              
              fra.setResizable(false);
              fra.pack();
@@ -38,7 +41,7 @@ public class DialogFenster {
     	   backImgPanel.setLayout(null);
            backImgPanel.setOpaque(false);
            backImgPanel.add(button);        
-           button.setBounds(80, 220, 150, 50);
+           button.setBounds(80, 220, 120, 50);
            backImgPanel.setBounds(0,0,400,300);
     	 
     	   
@@ -50,20 +53,17 @@ public class DialogFenster {
        }
        
        private void addListener() {
-   		button.addActionListener(new MyActionListener());
+   		button.addActionListener(event);
+   		button.setActionCommand("button");
    	}
        
+    
+   	public JButton getButton() {
+		return button;
+	}
        
-       class MyActionListener implements ActionListener {
-   		@Override
-   		public void actionPerformed(ActionEvent e) {
-   			if (e.getSource() == button) {
-   				fra.setVisible(false); 
-   				fra.dispose(); 
-   				new SpielerAuswahlDialog();
-   			} 
-   		}
-   	}
+       
+   
  
   
 	}

@@ -1,6 +1,6 @@
 package gui;
 
-import gui.DialogFenster.MyActionListener;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,26 +20,28 @@ import javax.swing.SwingConstants;
 
 
 
-public class SpielerAuswahlDialog {
+public class SpielerAnzAuswahlDialog {
 	
-	private JFrame frame;
+	JFrame frame;
 	private JLabel text;
 	private JLabel text2;
-	private JButton buttonWeiter;
+	JButton buttonWeiter;
 	private JPanel panelLeft;
 	private JPanel panelRight;
 	private JComboBox liste;
 	
+	private EventHandler event;
+	
 
 	
 	
-	    public SpielerAuswahlDialog() {
+	    public SpielerAnzAuswahlDialog() {
 	    	
-	    frame = new JFrame("Mensch aergere dich nicht");	
+	    frame = new JFrame("Mensch ärgere dich nicht");	
 	    frame.setSize(300, 100);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
-        
+		event=new EventHandler(this);
         erstelle();
         hinzufuegen();
         addListener();
@@ -96,22 +98,15 @@ public class SpielerAuswahlDialog {
 	    }
 	
 	    private void addListener() {
-	   		buttonWeiter.addActionListener(new MyActionListener());
+	   		buttonWeiter.addActionListener(event);
+	   		buttonWeiter.setActionCommand("buttonWeiter");
 	   	}
 	       
 	       
-	       class MyActionListener implements ActionListener {
-	   		@Override
-	   		public void actionPerformed(ActionEvent e) {
-	   			if (e.getSource() == buttonWeiter) {
-	   				frame.setVisible(false); 
-	   				frame.dispose(); 
-	   				new ArtAuswahlDialog();
-	   			} 
-	   		}
-	   	}
-
-	
+	    public JButton getButtonWeiter() {
+			return buttonWeiter;
+		}
+	         
 }
 
 

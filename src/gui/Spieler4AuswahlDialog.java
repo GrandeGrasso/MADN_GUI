@@ -16,11 +16,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class ArtAuswahlDialog {
+public class Spieler4AuswahlDialog {
 	
 	
 	JFrame frame;
-	JButton spielStarten;
+	JButton spielStarten4;
 	JLabel spielTypFrage;
 	JLabel name;
 	JLabel farben;
@@ -29,6 +29,9 @@ public class ArtAuswahlDialog {
 	JComboBox farbAuswahl;
 	JLabel spieloptionen;
 	JPanel panel = new JPanel();
+	JLabel spieler;
+	
+	private EventHandler event;
 	
 	 String[] art = {"Mensch", "KI Aggressiv" , "KI Defensiv"};
 	 String[] farbe = {"Rot","Blau", "Gruen", "Gelb"};
@@ -36,12 +39,13 @@ public class ArtAuswahlDialog {
 	
 	
 	
-	public ArtAuswahlDialog() {
+	public Spieler4AuswahlDialog() {
 		
-		frame=new JFrame("Mensch aergere dich nicht");
+		frame=new JFrame("Mensch ärgere dich nicht");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 290);
 		
+		event = new EventHandler(this);
 		erstelle();
 		hinzufuegen();
 		addListener();
@@ -55,39 +59,47 @@ public class ArtAuswahlDialog {
 
 	
 	private void erstelle() {
-		
+
 		spieloptionen= new JLabel("Spieloptionen");
 		spieloptionen.setBounds(180, 0, 250, 30);
 		spieloptionen.setFont(spieloptionen.getFont().deriveFont(Font.BOLD+Font.ITALIC,20));
 		spieloptionen.setForeground(Color.black);
+		
+		
+		spieler = new JLabel("Spieler 4");
+		spieler.setBounds(30, 0, 250, 30);
+		spieler.setForeground(Color.magenta);
+		spieler.setFont(spieler.getFont().deriveFont(Font.ROMAN_BASELINE+Font.ITALIC,15));
 //		
 		
-		spielTypFrage = new JLabel("Waehle eine Art");
-		spielTypFrage.setBounds(50, 40, 250, 20);
+		spielTypFrage = new JLabel("Wähle eine Art");
+		spielTypFrage.setBounds(50, 70, 250, 20);
 		
 		artAuswahl = new JComboBox(art);
 		artAuswahl.setBackground(Color.WHITE);
-		artAuswahl.setBounds(300, 40, 120, 25);
+		artAuswahl.setBounds(300, 70, 120, 25);
 		
 		name = new JLabel();
 		name.setText("Gib deinen Namen ein");
-		name.setBounds(50, 50, 250, 100);
+		name.setBounds(50, 80, 250, 100);
 		
 		nameEingabe = new TextField();
-		nameEingabe.setBounds(300, 90, 120, 20);
+		nameEingabe.setBounds(300, 120, 120, 20);
 		
-		farben = new JLabel("Waehle eine Farbe");
-		farben.setBounds(50, 140, 250, 20);
+		farben = new JLabel("Wähle eine Farbe");
+		farben.setBounds(50, 170, 250, 20);
 		
 		farbAuswahl = new JComboBox(farbe);
 		farbAuswahl.setBackground(Color.WHITE);
-		farbAuswahl.setBounds(300, 140, 120, 25);
+		farbAuswahl.setBounds(300, 170, 120, 25);
 		
 		
-		spielStarten = new JButton("Spiel starten");
-		spielStarten.setFont(new Font("Arial", Font.BOLD, 12));
-		spielStarten.setBackground(Color.WHITE);
-		spielStarten.setBounds(310, 200, 150, 30);	
+		spielStarten4 = new JButton("Spiel starten");
+		spielStarten4.setFont(new Font("Arial", Font.BOLD, 12));
+		spielStarten4.setBackground(Color.WHITE);
+		spielStarten4.setBounds(300, 220, 120, 30);	
+		
+	
 	}
 	
 	
@@ -107,9 +119,11 @@ public class ArtAuswahlDialog {
 		panel.add(farben);
 		panel.add(farbAuswahl);
 		
-		panel.add(spielStarten);
+		panel.add(spielStarten4);
 		
 		panel.add(spieloptionen);
+		
+		panel.add(spieler);
 		
 		frame.add(panel);
 	}
@@ -117,25 +131,16 @@ public class ArtAuswahlDialog {
 	
 	
 	private void addListener() {
-		spielStarten.addActionListener(new MyActionListener());
+		spielStarten4.addActionListener(event);
+		spielStarten4.setActionCommand("spielStarten4");
 	}
 	
 
-	class MyActionListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == spielStarten) {
-				frame.setVisible(false); 
-				frame.dispose(); 
-				new GuiSpielbrett();
-			} 
-		}
+	public JButton getSpielStarten() {
+		return spielStarten4;
 	}
 	
-	
-	
-	
-	
+
 	
 	
 	
