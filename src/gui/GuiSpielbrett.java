@@ -98,14 +98,16 @@ public class GuiSpielbrett {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		zahl=new int[1];
 		
-//		addListener(); 
-		createWidgets();
-		addWidgets();
+
 		
 		this.spieler1=spieler1;
 		this.spieler2=spieler2;
 		this.spieler3=spieler3;
 		this.spieler4=spieler4;
+		
+//		addListener(); 
+		createWidgets();
+		addWidgets();
 		
 		spiel=new Spiel();
 	
@@ -136,10 +138,10 @@ public class GuiSpielbrett {
 		
 		pnlAdd.add(Box.createVerticalGlue());
 		
-		pnlAdd.add(imageFigurRot);
-		pnlAdd.add(imageFigurBlau);
-		pnlAdd.add(imageFigurGelb);
-		pnlAdd.add(imageFigurGruen);
+//		pnlAdd.add(imageFigurRot);
+//		pnlAdd.add(imageFigurBlau);
+//		pnlAdd.add(imageFigurGelb);
+//		pnlAdd.add(imageFigurGruen);
 		
 		
 		
@@ -169,246 +171,246 @@ public class GuiSpielbrett {
 		message.redirectErr(Color.red, null);
 		message.setMessageLines(1000);
 		
+	
+		startRot = new ArrayList<JButton>();
+		for(int i=0; i<=3; i++){
+			startRot.add(new JButton());
+			imageBrett.add(startRot.get(i));
+			startRot.get(i).setBorderPainted(false);
+			startRot.get(i).setContentAreaFilled(false);
+			startRot.get(i).addActionListener(new EventHandler(this));
+			startRot.get(i).setActionCommand("feld");
+		}
+		
+		startRot.get(0).setBounds(60, 8, 40, 45);
+		startRot.get(1).setBounds(11, 9, 40, 45);
+		startRot.get(2).setBounds(11, 55, 40, 45);
+		startRot.get(3).setBounds(60, 54, 40, 45);
+		
+		startBlau = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			startBlau.add(new JButton());
+			imageBrett.add(startBlau.get(i));
+			startBlau.get(i).setBorderPainted(false);
+			startBlau.get(i).setContentAreaFilled(false);
+			startBlau.get(i).addActionListener(new EventHandler(this));
+			startBlau.get(i).setActionCommand("feld");
+		}
+		startBlau.get(0).setBounds(486, 7, 40, 45);
+		startBlau.get(1).setBounds(436, 7, 40, 45);
+		startBlau.get(2).setBounds(436, 52, 40, 45);
+		startBlau.get(3).setBounds(486, 52, 40, 45);
+		
+		
+		startGruen = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			startGruen.add(new JButton());
+			imageBrett.add(startGruen.get(i));
+			startGruen.get(i).setBorderPainted(false);
+			startGruen.get(i).setContentAreaFilled(false);
+			startGruen.get(i).addActionListener(new EventHandler(this));
+			startGruen.get(i).setActionCommand("feld");
+		}
+		startGruen.get(0).setBounds(486, 436, 40, 45);
+		startGruen.get(1).setBounds(437, 437, 40, 45);
+		startGruen.get(2).setBounds(437, 486, 40, 45);
+		startGruen.get(3).setBounds(486, 487, 40, 45);
+		
+		startGelb = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			startGelb.add(new JButton());
+			imageBrett.add(startGelb.get(i));
+			startGelb.get(i).setBorderPainted(false);
+			startGelb.get(i).setContentAreaFilled(false);
+			startGelb.get(i).addActionListener(new EventHandler(this));
+			startGelb.get(i).setActionCommand("feld");
+		}
+		startGelb.get(0).setBounds(59, 435, 40, 45);
+		startGelb.get(1).setBounds(11, 435, 40, 45);
+		startGelb.get(2).setBounds(12, 488, 40, 45);
+		startGelb.get(3).setBounds(59, 487, 40, 45);
+		
+		
+		endRot = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			endRot.add(new JButton());
+			imageBrett.add(endRot.get(i));
+			endRot.get(i).setBorderPainted(false);
+			endRot.get(i).setContentAreaFilled(false);
+			endRot.get(i).addActionListener(new EventHandler(this));
+			endRot.get(i).setActionCommand("feld");
+		}
+		endRot.get(0).setBounds(58, 248, 40, 45);
+		endRot.get(1).setBounds(106, 248, 40, 45);
+		endRot.get(2).setBounds(155, 248, 40, 45);
+		endRot.get(3).setBounds(200, 248, 40, 45);
+		
+		endBlau = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			endBlau.add(new JButton());
+			imageBrett.add(endBlau.get(i));
+			endBlau.get(i).setBorderPainted(false);
+			endBlau.get(i).setContentAreaFilled(false);
+			endBlau.get(i).addActionListener(new EventHandler(this));
+			endBlau.get(i).setActionCommand("feld");
+		}
+		endBlau.get(0).setBounds(249, 56, 40, 45);
+		endBlau.get(1).setBounds(249, 102, 40, 45);
+		endBlau.get(2).setBounds(249, 151, 40, 45);
+		endBlau.get(3).setBounds(249, 196, 40, 45);
+		
+		endGruen = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			endGruen .add(new JButton());
+			imageBrett.add(endGruen .get(i));
+			endGruen .get(i).setBorderPainted(false);
+			endGruen .get(i).setContentAreaFilled(false);
+			endGruen .get(i).addActionListener(new EventHandler(this));
+			endGruen .get(i).setActionCommand("feld");
+		}
+		endGruen .get(0).setBounds(441, 246, 40, 45);
+		endGruen .get(1).setBounds(395, 246, 40, 45);
+		endGruen .get(2).setBounds(347, 246, 40, 45);
+		endGruen .get(3).setBounds(299, 246, 40, 45);
+		
+		endGelb = new ArrayList<JButton>();
+		
+		for(int i=0; i<=3; i++){
+			endGelb .add(new JButton());
+			imageBrett.add(endGelb.get(i));
+			endGelb.get(i).setBorderPainted(false);
+			endGelb.get(i).setContentAreaFilled(false);
+			endGelb.get(i).addActionListener(new EventHandler(this));
+			endGelb.get(i).setActionCommand("feld");
+		}
+		endGelb.get(0).setBounds(250, 439, 40, 45);
+		endGelb.get(1).setBounds(250, 391, 40, 45);
+		endGelb.get(2).setBounds(250, 343, 40, 45);
+		endGelb.get(3).setBounds(250, 297, 40, 45);
+		
+		
+		felder=new ArrayList<JButton>();
+		for(int i=0; i<=39;i++){
+			felder.add(new JButton());
+			imageBrett.add(felder.get(i));
+			felder.get(i).setBorderPainted(false);
+			felder.get(i).setContentAreaFilled(false);
+			felder.get(i).addActionListener(new EventHandler(this));
+			felder.get(i).setActionCommand("feld");
+		}
+		
+		felder.get(0).setBounds(12, 200, 40, 45);
+		felder.get(1).setBounds(54, 200, 40, 45);
+		felder.get(2).setBounds(99, 200, 40, 45);
+		felder.get(3).setBounds(145,200, 40, 45);
+		felder.get(4).setBounds(201,197, 40, 45);
+		felder.get(5).setBounds(201,148, 40, 45);
+		felder.get(6).setBounds(201,100, 40, 45);
+		felder.get(7).setBounds(201,52, 40, 45);
+		felder.get(8).setBounds(201,9, 40, 45);
+		felder.get(9).setBounds(252,9, 40, 45);
+		felder.get(10).setBounds(299,7, 40, 45);
+		felder.get(11).setBounds(299,51, 40, 45);
+		felder.get(12).setBounds(300,97, 40, 45);
+		felder.get(13).setBounds(300,142, 40, 45);
+		felder.get(14).setBounds(300,196, 40, 45);
+		felder.get(15).setBounds(434,198, 40, 45);
+		felder.get(16).setBounds(391,198, 40, 45);
+		felder.get(17).setBounds(440,198, 40, 45);
+		felder.get(18).setBounds(485,198, 40, 45);
+		felder.get(19).setBounds(486,246, 40, 45);
+		felder.get(20).setBounds(486,296, 40, 45);
+		felder.get(21).setBounds(440,296, 40, 45);
+		felder.get(22).setBounds(392,296, 40, 45);
+		felder.get(23).setBounds(343,296, 40, 45);
+		felder.get(24).setBounds(300,297, 40, 45);
+		felder.get(25).setBounds(300,343, 40, 45);
+		felder.get(26).setBounds(300,388, 40, 45);
+		felder.get(27).setBounds(300,433, 40, 45);
+		felder.get(28).setBounds(300,486, 40, 45);
+		felder.get(29).setBounds(252,485, 40, 45);
+		felder.get(30).setBounds(202,484, 40, 45);
+		felder.get(31).setBounds(202,438, 40, 45);
+		felder.get(32).setBounds(202,390, 40, 45);
+		felder.get(33).setBounds(202,342, 40, 45);
+		felder.get(34).setBounds(202,297, 40, 45);
+		felder.get(35).setBounds(146,294, 40, 45);
+		felder.get(36).setBounds(100,294, 40, 45);
+		felder.get(37).setBounds(54,294, 40, 45);
+		felder.get(38).setBounds(13,294, 40, 45);
+		felder.get(39).setBounds(13,249, 40, 45);
+		
+		
+		if(spieler1.zahl()==1){
+			
+			Color farbe =spieler1.farbAuswahl((String) spieler1.getArtAuswahl().
+					getSelectedItem());
+			
+			if(farbe==Color.RED){
+				felder.get(10).setIcon(rot.get(0));
+				startRot.get(1).setIcon(rot.get(1));
+				startRot.get(2).setIcon(rot.get(2));
+				startRot.get(3).setIcon(rot.get(3));
+			}
+			
+			else if(farbe==Color.BLUE){
+				startBlau.get(0).setIcon(blau.get(0));
+				startBlau.get(1).setIcon(blau.get(1));
+				startBlau.get(2).setIcon(blau.get(2));
+				startBlau.get(3).setIcon(blau.get(3));
+				
+			}
+			
+			else if(farbe==Color.GREEN){
+				startGruen.get(0).setIcon(gruen.get(0));
+				startGruen.get(1).setIcon(blau.get(1));
+				startGruen.get(2).setIcon(blau.get(2));
+				startGruen.get(3).setIcon(gruen.get(3));
+				
+			}
+			
+			else if(farbe==Color.YELLOW){
+				startGelb.get(0).setIcon(gelb.get(0));
+				startGelb.get(1).setIcon(gelb.get(1));
+				startGelb.get(2).setIcon(gelb.get(2));
+				startGelb.get(3).setIcon(gelb.get(3));
+				
+			}
+			
+		}
+		
+		if(spieler1.zahl()==4){
+			pnlAdd.add(imageFigurRot);
+			pnlAdd.add(imageFigurBlau);
+			pnlAdd.add(imageFigurGelb);
+			pnlAdd.add(imageFigurGruen);
+		}
+		else if(spieler1.zahl()==3){
+		pnlAdd.add(imageFigurRot);
+		pnlAdd.add(imageFigurBlau);
+		pnlAdd.add(imageFigurGelb);
+		
+		}
+		else if(spieler1.zahl()==2){
+			pnlAdd.add(imageFigurRot);
+			pnlAdd.add(imageFigurBlau);
+		
+			
+		}
+		else if(spieler1.zahl()==1){
+			pnlAdd.add(imageFigurRot);
+			
+		}
+		
+		
+		
 	}
-//		startRot = new ArrayList<JButton>();
-//		for(int i=0; i<=3; i++){
-//			startRot.add(new JButton());
-//			imageBrett.add(startRot.get(i));
-//			startRot.get(i).setBorderPainted(false);
-//			startRot.get(i).setContentAreaFilled(false);
-//			startRot.get(i).addActionListener(new EventHandler(this));
-//			startRot.get(i).setActionCommand("feld");
-//		}
-//		
-//		startRot.get(0).setBounds(60, 8, 40, 45);
-//		startRot.get(1).setBounds(11, 9, 40, 45);
-//		startRot.get(2).setBounds(11, 55, 40, 45);
-//		startRot.get(3).setBounds(60, 54, 40, 45);
-//		
-//		startBlau = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			startBlau.add(new JButton());
-//			imageBrett.add(startBlau.get(i));
-//			startBlau.get(i).setBorderPainted(false);
-//			startBlau.get(i).setContentAreaFilled(false);
-//			startBlau.get(i).addActionListener(new EventHandler(this));
-//			startBlau.get(i).setActionCommand("feld");
-//		}
-//		startBlau.get(0).setBounds(486, 7, 40, 45);
-//		startBlau.get(1).setBounds(436, 7, 40, 45);
-//		startBlau.get(2).setBounds(436, 52, 40, 45);
-//		startBlau.get(3).setBounds(486, 52, 40, 45);
-//		
-//		
-//		startGruen = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			startGruen.add(new JButton());
-//			imageBrett.add(startGruen.get(i));
-//			startGruen.get(i).setBorderPainted(false);
-//			startGruen.get(i).setContentAreaFilled(false);
-//			startGruen.get(i).addActionListener(new EventHandler(this));
-//			startGruen.get(i).setActionCommand("feld");
-//		}
-//		startGruen.get(0).setBounds(486, 436, 40, 45);
-//		startGruen.get(1).setBounds(437, 437, 40, 45);
-//		startGruen.get(2).setBounds(437, 486, 40, 45);
-//		startGruen.get(3).setBounds(486, 487, 40, 45);
-//		
-//		startGelb = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			startGelb.add(new JButton());
-//			imageBrett.add(startGelb.get(i));
-//			startGelb.get(i).setBorderPainted(false);
-//			startGelb.get(i).setContentAreaFilled(false);
-//			startGelb.get(i).addActionListener(new EventHandler(this));
-//			startGelb.get(i).setActionCommand("feld");
-//		}
-//		startGelb.get(0).setBounds(59, 435, 40, 45);
-//		startGelb.get(1).setBounds(11, 435, 40, 45);
-//		startGelb.get(2).setBounds(12, 488, 40, 45);
-//		startGelb.get(3).setBounds(59, 487, 40, 45);
-//		
-//		
-//		endRot = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			endRot.add(new JButton());
-//			imageBrett.add(endRot.get(i));
-//			endRot.get(i).setBorderPainted(false);
-//			endRot.get(i).setContentAreaFilled(false);
-//			endRot.get(i).addActionListener(new EventHandler(this));
-//			endRot.get(i).setActionCommand("feld");
-//		}
-//		endRot.get(0).setBounds(58, 248, 40, 45);
-//		endRot.get(1).setBounds(106, 248, 40, 45);
-//		endRot.get(2).setBounds(155, 248, 40, 45);
-//		endRot.get(3).setBounds(200, 248, 40, 45);
-//		
-//		endBlau = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			endBlau.add(new JButton());
-//			imageBrett.add(endBlau.get(i));
-//			endBlau.get(i).setBorderPainted(false);
-//			endBlau.get(i).setContentAreaFilled(false);
-//			endBlau.get(i).addActionListener(new EventHandler(this));
-//			endBlau.get(i).setActionCommand("feld");
-//		}
-//		endBlau.get(0).setBounds(249, 56, 40, 45);
-//		endBlau.get(1).setBounds(249, 102, 40, 45);
-//		endBlau.get(2).setBounds(249, 151, 40, 45);
-//		endBlau.get(3).setBounds(249, 196, 40, 45);
-//		
-//		endGruen = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			endGruen .add(new JButton());
-//			imageBrett.add(endGruen .get(i));
-//			endGruen .get(i).setBorderPainted(false);
-//			endGruen .get(i).setContentAreaFilled(false);
-//			endGruen .get(i).addActionListener(new EventHandler(this));
-//			endGruen .get(i).setActionCommand("feld");
-//		}
-//		endGruen .get(0).setBounds(441, 246, 40, 45);
-//		endGruen .get(1).setBounds(395, 246, 40, 45);
-//		endGruen .get(2).setBounds(347, 246, 40, 45);
-//		endGruen .get(3).setBounds(299, 246, 40, 45);
-//		
-//		endGelb = new ArrayList<JButton>();
-//		
-//		for(int i=0; i<=3; i++){
-//			endGelb .add(new JButton());
-//			imageBrett.add(endGelb.get(i));
-//			endGelb.get(i).setBorderPainted(false);
-//			endGelb.get(i).setContentAreaFilled(false);
-//			endGelb.get(i).addActionListener(new EventHandler(this));
-//			endGelb.get(i).setActionCommand("feld");
-//		}
-//		endGelb.get(0).setBounds(250, 439, 40, 45);
-//		endGelb.get(1).setBounds(250, 391, 40, 45);
-//		endGelb.get(2).setBounds(250, 343, 40, 45);
-//		endGelb.get(3).setBounds(250, 297, 40, 45);
-//		
-//		
-//		felder=new ArrayList<JButton>();
-//		for(int i=0; i<=39;i++){
-//			felder.add(new JButton());
-//			imageBrett.add(felder.get(i));
-//			felder.get(i).setBorderPainted(false);
-//			felder.get(i).setContentAreaFilled(false);
-//			felder.get(i).addActionListener(new EventHandler(this));
-//			felder.get(i).setActionCommand("feld");
-//		}
-//		
-//		felder.get(0).setBounds(12, 200, 40, 45);
-//		felder.get(1).setBounds(54, 200, 40, 45);
-//		felder.get(2).setBounds(99, 200, 40, 45);
-//		felder.get(3).setBounds(145,200, 40, 45);
-//		felder.get(4).setBounds(201,197, 40, 45);
-//		felder.get(5).setBounds(201,148, 40, 45);
-//		felder.get(6).setBounds(201,100, 40, 45);
-//		felder.get(7).setBounds(201,52, 40, 45);
-//		felder.get(8).setBounds(201,9, 40, 45);
-//		felder.get(9).setBounds(252,9, 40, 45);
-//		felder.get(10).setBounds(299,7, 40, 45);
-//		felder.get(11).setBounds(299,51, 40, 45);
-//		felder.get(12).setBounds(300,97, 40, 45);
-//		felder.get(13).setBounds(300,142, 40, 45);
-//		felder.get(14).setBounds(300,196, 40, 45);
-//		felder.get(15).setBounds(434,198, 40, 45);
-//		felder.get(16).setBounds(391,198, 40, 45);
-//		felder.get(17).setBounds(440,198, 40, 45);
-//		felder.get(18).setBounds(485,198, 40, 45);
-//		felder.get(19).setBounds(486,246, 40, 45);
-//		felder.get(20).setBounds(486,296, 40, 45);
-//		felder.get(21).setBounds(440,296, 40, 45);
-//		felder.get(22).setBounds(392,296, 40, 45);
-//		felder.get(23).setBounds(343,296, 40, 45);
-//		felder.get(24).setBounds(300,297, 40, 45);
-//		felder.get(25).setBounds(300,343, 40, 45);
-//		felder.get(26).setBounds(300,388, 40, 45);
-//		felder.get(27).setBounds(300,433, 40, 45);
-//		felder.get(28).setBounds(300,486, 40, 45);
-//		felder.get(29).setBounds(252,485, 40, 45);
-//		felder.get(30).setBounds(202,484, 40, 45);
-//		felder.get(31).setBounds(202,438, 40, 45);
-//		felder.get(32).setBounds(202,390, 40, 45);
-//		felder.get(33).setBounds(202,342, 40, 45);
-//		felder.get(34).setBounds(202,297, 40, 45);
-//		felder.get(35).setBounds(146,294, 40, 45);
-//		felder.get(36).setBounds(100,294, 40, 45);
-//		felder.get(37).setBounds(54,294, 40, 45);
-//		felder.get(38).setBounds(13,294, 40, 45);
-//		felder.get(39).setBounds(13,249, 40, 45);
-		
-		
-//		if(spieler1.zahl()==1){
-//			
-//			Color farbe =spieler1.farbAuswahl((String) spieler1.getArtAuswahl().
-//					getSelectedItem());
-//			
-//			if(farbe==Color.RED){
-//				felder.get(10).setIcon(rot.get(0));
-//				startRot.get(1).setIcon(rot.get(1));
-//				startRot.get(2).setIcon(rot.get(2));
-//				startRot.get(3).setIcon(rot.get(3));
-//			}
-//			
-//			else if(farbe==Color.BLUE){
-//				startBlau.get(0).setIcon(blau.get(0));
-//				startBlau.get(1).setIcon(blau.get(1));
-//				startBlau.get(2).setIcon(blau.get(2));
-//				startBlau.get(3).setIcon(blau.get(3));
-//				
-//			}
-//			
-//			else if(farbe==Color.GREEN){
-//				startGruen.get(0).setIcon(gruen.get(0));
-//				startGruen.get(1).setIcon(blau.get(1));
-//				startGruen.get(2).setIcon(blau.get(2));
-//				startGruen.get(3).setIcon(gruen.get(3));
-//				
-//			}
-//			
-//			else if(farbe==Color.YELLOW){
-//				startGelb.get(0).setIcon(gelb.get(0));
-//				startGelb.get(1).setIcon(gelb.get(1));
-//				startGelb.get(2).setIcon(gelb.get(2));
-//				startGelb.get(3).setIcon(gelb.get(3));
-//				
-//			}
-//			
-//		}
-//		
-//		if(spieler1.zahl()==4){
-//			pnlAdd.add(imageFigurRot);
-//			pnlAdd.add(imageFigurBlau);
-//			pnlAdd.add(imageFigurGelb);
-//			pnlAdd.add(imageFigurGruen);
-//		}
-//		else if(spieler1.zahl()==3){
-//		pnlAdd.add(imageFigurRot);
-//		pnlAdd.add(imageFigurBlau);
-//		pnlAdd.add(imageFigurGelb);
-//		
-//		}
-//		else if(spieler1.zahl()==2){
-//			pnlAdd.add(imageFigurRot);
-//			pnlAdd.add(imageFigurBlau);
-//		
-//			
-//		}
-//		else if(spieler1.zahl()==1){
-//			pnlAdd.add(imageFigurRot);
-//			
-//		}
-//		
-//		
-//		
-//	}
 		
 		
 	
@@ -495,85 +497,85 @@ public class GuiSpielbrett {
 		
 		
 	
-	}
-		//auswhahl spieler
-//		if(spieler1.zahl()==4){
-//			
-//			
-//			sp1=new JLabel(spieler1.getNameEingabe().getText());
-//			sp1.setForeground(spieler1.farbAuswahl(
-//					(String)spieler1.getFarbAuswahl().getSelectedItem()));
-//			
-//		sp1.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
-//			
-//			
-//			
-//			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-//			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-//			imageFigurRot.setForeground (spieler1.farbAuswahl(
-//					(String)spieler1.getFarbAuswahl().getSelectedItem()));
-//			
-//			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-//			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-//			
-//			imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-//			imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
-//			
-//			imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
-//			imageFigurGruen.setToolTipText(spieler4.getNameEingabe().getText());
-//			
-//		}
-//		else if(spieler1.zahl()==3){
-//			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-//			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-//			
-//			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-//			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-//			
-//			imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-//			imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
-//			
-//		}
-//		else if(spieler1.zahl()==2){
-//			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-//			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-//			
-//			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-//			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-//	
-//			
-//		}
-//		else if(spieler1.zahl()==1){
-//			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-//			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-//	
-//	
-//		}
-//		
-//		rot=new ArrayList<ImageIcon>();
-//		for(int i=1;i<=4;i++){
-//			rot.add(new ImageIcon("rot"+i+".png"));
-//		}
-//		
-//		
-//		blau=new ArrayList<ImageIcon>();
-//		for(int i=1; i<=4;i++){
-//			blau.add(new ImageIcon("blau"+i+".png"));
-//		}
-//		
-//		gruen=new ArrayList<ImageIcon>();
-//		for(int i=1;i<=4;i++){
-//			gruen.add(new ImageIcon("gruen"+i+".png"));
-//		}
-//		
-//		gelb=new ArrayList<ImageIcon>();
-//		for(int i=1;i<=4;i++){
-//			gelb.add(new ImageIcon("gelb"+i+".png"));
-//		}
-//
-//		
-//	}
 	
+		//auswhahl spieler
+		if(spieler1.zahl()==4){
+			
+			
+			sp1=new JLabel(spieler1.getNameEingabe().getText());
+			sp1.setForeground(spieler1.farbAuswahl(
+					(String)spieler1.getFarbAuswahl().getSelectedItem()));
+			
+		sp1.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
+			
+			
+			
+			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+			imageFigurRot.setForeground (spieler1.farbAuswahl(
+					(String)spieler1.getFarbAuswahl().getSelectedItem()));
+			
+			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+			
+			imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
+			imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
+			
+			imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
+			imageFigurGruen.setToolTipText(spieler4.getNameEingabe().getText());
+			
+		}
+		else if(spieler1.zahl()==3){
+			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+			
+			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+			
+			imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
+			imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
+			
+		}
+		else if(spieler1.zahl()==2){
+			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+			
+			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+	
+			
+		}
+		else if(spieler1.zahl()==1){
+			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+	
+	
+		}
+		
+		rot=new ArrayList<ImageIcon>();
+		for(int i=1;i<=4;i++){
+			rot.add(new ImageIcon("rot"+i+".png"));
+		}
+		
+		
+		blau=new ArrayList<ImageIcon>();
+		for(int i=1; i<=4;i++){
+			blau.add(new ImageIcon("blau"+i+".png"));
+		}
+		
+		gruen=new ArrayList<ImageIcon>();
+		for(int i=1;i<=4;i++){
+			gruen.add(new ImageIcon("gruen"+i+".png"));
+		}
+		
+		gelb=new ArrayList<ImageIcon>();
+		for(int i=1;i<=4;i++){
+			gelb.add(new ImageIcon("gelb"+i+".png"));
+		}
+
+		
+	}
+
 	public Spieler1AuswahlDialog getSpieler1(){
 		return spieler1;
 	}
