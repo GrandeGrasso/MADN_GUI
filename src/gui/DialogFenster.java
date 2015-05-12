@@ -1,7 +1,6 @@
 package gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,7 +21,6 @@ public class DialogFenster {
         	 fra.setSize(300, 300);
              fra.setLocationRelativeTo(null);
              fra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             
              
              event = new EventHandler(this);
              erstelle();

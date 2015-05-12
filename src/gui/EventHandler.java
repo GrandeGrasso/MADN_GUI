@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import klassen.Spiel;
+import klassen.Spieler;
 
 public class EventHandler implements ActionListener{
 	
@@ -17,8 +22,12 @@ public class EventHandler implements ActionListener{
 	 Spieler4AuswahlDialog spieler4AuswahlDialog;
 	 GuiSpielbrett guiSpielbrett;
 	 
-	 
-	 public EventHandler(DialogFenster dialogFenster) {
+	 Spiel play;
+	 Spieler sp;
+		
+	
+	
+	    public EventHandler(DialogFenster dialogFenster) {
 			this.dialogFenster=dialogFenster;
 		}	
 		public EventHandler(SpielerAnzAuswahlDialog spielerAnzAuswahlDialog) {
@@ -59,33 +68,114 @@ public class EventHandler implements ActionListener{
 		else if(cmd.equals("buttonWeiter")){
 			spielerAnzAuswahlDialog.frame.setVisible(false);
 			spielerAnzAuswahlDialog.frame.dispose();
-			new Spieler1AuswahlDialog();
+			new Spieler1AuswahlDialog(spielerAnzAuswahlDialog);
 		}	
 		else if(cmd.equals("spielStarten")){
-			spieler1AuswahlDialog.frame.setVisible(false);
-			spieler1AuswahlDialog.frame.dispose();
-			new Spieler2AuswahlDialog();
+			String name = spieler1AuswahlDialog.getNameEingabe().getText();
+			
+			if(name==null || name.length()<2){
+				JOptionPane.showMessageDialog(spieler1AuswahlDialog,
+						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"ERROR!",
+						JOptionPane.ERROR_MESSAGE);
+			}
+				
+			else if(spieler1AuswahlDialog.zahl()==1){
+				
+				spieler1AuswahlDialog.frame.setVisible(false);
+				spieler1AuswahlDialog.frame.dispose();
+				new GuiSpielbrett(spieler1AuswahlDialog,null,null,null);
+				
+			}
+			
+			else if(spieler1AuswahlDialog.zahl()!=1){
+				
+				spieler1AuswahlDialog.frame.setVisible(false);
+				spieler1AuswahlDialog.frame.dispose();
+				new Spieler2AuswahlDialog(spieler1AuswahlDialog);
+				
+			}
+			
 		}	
 		
 		else if(cmd.equals("spielStarten2")){
+			
+			String name=spieler2AuswahlDialog.getNameEingabe().getText();
+			
+			if(name==null || name.length()<2){
+				JOptionPane.showMessageDialog(spieler2AuswahlDialog,
+						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"ERROR!",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			
+			else if(spieler2AuswahlDialog.getSpieler1().zahl()==2){
 			spieler2AuswahlDialog.frame.setVisible(false);
 			spieler2AuswahlDialog.frame.dispose();
-			new Spieler3AuswahlDialog();
+			new GuiSpielbrett(spieler2AuswahlDialog.getSpieler1(),spieler2AuswahlDialog,
+					null,null);
 		}	
-		else if(cmd.equals("spielStarten3")){
-			spieler3AuswahlDialog.frame.setVisible(false);
-			spieler3AuswahlDialog.frame.dispose();
-			new Spieler4AuswahlDialog();
-		}	
-		else if(cmd.equals("spielStarten4")){
-			new GuiSpielbrett();
 			
-		}	
+			else if(spieler2AuswahlDialog.getSpieler1().zahl()!=2){
+				
+				spieler2AuswahlDialog.frame.setVisible(false);
+				spieler2AuswahlDialog.frame.dispose();
+				new Spieler3AuswahlDialog(spieler2AuswahlDialog);
+				
+			}
+			
+		}
+		
+		
+		else if(cmd.equals("spielStarten3")){
+			
+			String name=spieler3AuswahlDialog.getNameEingabe().getText();
+			
+			if(name==null || name.length()<2){
+				JOptionPane.showMessageDialog(spieler3AuswahlDialog,
+						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"ERROR!",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			else if(spieler3AuswahlDialog.getSpieler2().getSpieler1().zahl()==3){
+				spieler3AuswahlDialog.frame.setVisible(false);
+				spieler3AuswahlDialog.frame.dispose();
+				new GuiSpielbrett(spieler3AuswahlDialog.getSpieler2().getSpieler1(),
+						spieler3AuswahlDialog.getSpieler2(),spieler3AuswahlDialog,null);
+			}	
+				
+				else if(spieler3AuswahlDialog.getSpieler2().getSpieler1().zahl()!=3){
+					
+					spieler3AuswahlDialog.frame.setVisible(false);
+					spieler3AuswahlDialog.frame.dispose();
+					new Spieler4AuswahlDialog(spieler3AuswahlDialog);
+					
+				}
+				
+			}
+		else if(cmd.equals("spielStarten4")){
+			String name=spieler4AuswahlDialog.getNameEingabe().getText();
+			
+			if(name==null || name.length()<2){
+				JOptionPane.showMessageDialog(spieler4AuswahlDialog,
+						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"ERROR!",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+				spieler4AuswahlDialog.frame.setVisible(false);
+				spieler4AuswahlDialog.frame.dispose();
+				new GuiSpielbrett(spieler4AuswahlDialog.getSpieler3().getSpieler2().getSpieler1(),
+						spieler4AuswahlDialog.getSpieler3().getSpieler2(),
+						spieler4AuswahlDialog.getSpieler3(),spieler4AuswahlDialog);
+			}
+				
+			
+			
+			
+			
 	}
-	
-	
-	
-	
+		}
 	
 	
 	

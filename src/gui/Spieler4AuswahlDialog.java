@@ -12,15 +12,19 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Spieler4AuswahlDialog {
+import klassen.Spieler;
+import klassen.eFarben;
+
+public class Spieler4AuswahlDialog extends JOptionPane {
 	
 	
 	JFrame frame;
-	JButton spielStarten4;
+	JButton spielStarten;
 	JLabel spielTypFrage;
 	JLabel name;
 	JLabel farben;
@@ -29,8 +33,11 @@ public class Spieler4AuswahlDialog {
 	JComboBox farbAuswahl;
 	JLabel spieloptionen;
 	JPanel panel = new JPanel();
-	JLabel spieler;
+	JLabel spielerText;
 	
+	private Spieler spieler;
+	
+	private Spieler3AuswahlDialog spieler3AuswahlDialog;
 	private EventHandler event;
 	
 	 String[] art = {"Mensch", "KI Aggressiv" , "KI Defensiv"};
@@ -39,12 +46,13 @@ public class Spieler4AuswahlDialog {
 	
 	
 	
-	public Spieler4AuswahlDialog() {
+	public Spieler4AuswahlDialog(Spieler3AuswahlDialog spieler3AuswahlDialog) {
 		
 		frame=new JFrame("Mensch ‰rgere dich nicht");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 290);
 		
+		this.spieler3AuswahlDialog=spieler3AuswahlDialog;
 		event = new EventHandler(this);
 		erstelle();
 		hinzufuegen();
@@ -66,10 +74,10 @@ public class Spieler4AuswahlDialog {
 		spieloptionen.setForeground(Color.black);
 		
 		
-		spieler = new JLabel("Spieler 4");
-		spieler.setBounds(30, 0, 250, 30);
-		spieler.setForeground(Color.magenta);
-		spieler.setFont(spieler.getFont().deriveFont(Font.ROMAN_BASELINE+Font.ITALIC,15));
+		spielerText = new JLabel("Spieler 4");
+		spielerText.setBounds(30, 0, 250, 30);
+		spielerText.setForeground(Color.magenta);
+		spielerText.setFont(spielerText.getFont().deriveFont(Font.ROMAN_BASELINE+Font.ITALIC,15));
 //		
 		
 		spielTypFrage = new JLabel("W‰hle eine Art");
@@ -94,10 +102,10 @@ public class Spieler4AuswahlDialog {
 		farbAuswahl.setBounds(300, 170, 120, 25);
 		
 		
-		spielStarten4 = new JButton("Spiel starten");
-		spielStarten4.setFont(new Font("Arial", Font.BOLD, 12));
-		spielStarten4.setBackground(Color.WHITE);
-		spielStarten4.setBounds(300, 220, 120, 30);	
+		spielStarten = new JButton("Spiel starten");
+		spielStarten.setFont(new Font("Arial", Font.BOLD, 12));
+		spielStarten.setBackground(Color.WHITE);
+		spielStarten.setBounds(300, 220, 120, 30);	
 		
 	
 	}
@@ -119,29 +127,90 @@ public class Spieler4AuswahlDialog {
 		panel.add(farben);
 		panel.add(farbAuswahl);
 		
-		panel.add(spielStarten4);
+		panel.add(spielStarten);
 		
 		panel.add(spieloptionen);
 		
-		panel.add(spieler);
+		panel.add(spielerText);
 		
 		frame.add(panel);
 	}
 	
+
+	
+	public eFarben gibFarbe(String farbe){
+		eFarben getFarbe =null;
+		switch(farbe){
+			case"Rot":
+				getFarbe=eFarben.ROT;
+				break;
+			case"Blau":
+				getFarbe=eFarben.BLAU;
+				break;
+			case"Gruen":
+				getFarbe=eFarben.GRUEN;
+				break;
+			case"Gelb":
+				getFarbe=eFarben.GELB;
+				break;
+		}
+		return getFarbe;
+	}
+	
+	
+	
+	public Color farbAuswahl(String farbe){
+		Color getFarbe=null;
+		switch(farbe){
+			case"Rot":
+				getFarbe=Color.RED;
+				break;
+			case"Blau":
+				getFarbe=Color.BLUE;
+				break;
+			case"Gr√ºn":
+				getFarbe=Color.GREEN;
+				break;
+			case"Gelb":
+				getFarbe=Color.ORANGE;
+				break;
+		}
+		return getFarbe;
+	}
+
 	
 	
 	private void addListener() {
-		spielStarten4.addActionListener(event);
-		spielStarten4.setActionCommand("spielStarten4");
+		spielStarten.addActionListener(event);
+		spielStarten.setActionCommand("spielStarten4");
 	}
 	
 
 	public JButton getSpielStarten() {
-		return spielStarten4;
+		return spielStarten;
 	}
 	
-
+	public JComboBox getArtAuswahl() {
+		return artAuswahl;
+	}
+	public JComboBox getFarbAuswahl() {
+		return farbAuswahl;
+	}
+	public TextField getNameEingabe() {
+		return nameEingabe;
+	}
+	public String[] getFarbe() {
+		return farbe;
+	}
+	public String[] getArt() {
+		return art;
+	}
+	public Spieler3AuswahlDialog getSpieler3() {
+		return spieler3AuswahlDialog;
+	}
 	
+	
+
 	
 	
     	

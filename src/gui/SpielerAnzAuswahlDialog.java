@@ -29,7 +29,7 @@ public class SpielerAnzAuswahlDialog {
 	private JPanel panelLeft;
 	private JPanel panelRight;
 	private JComboBox liste;
-	
+	Integer[] anzahlSpieler ={1,2,3,4};
 	private EventHandler event;
 	
 
@@ -72,7 +72,7 @@ public class SpielerAnzAuswahlDialog {
 	    
 	    	text2 = new JLabel("Anzahl Spieler");
 	    	
-	    	String[] anzahlSpieler ={"1","2","3","4"};
+	    	
 	    	liste = new JComboBox (anzahlSpieler);
 	    
 	    	panelLeft = new JPanel();
@@ -106,6 +106,18 @@ public class SpielerAnzAuswahlDialog {
 	    public JButton getButtonWeiter() {
 			return buttonWeiter;
 		}
+	    
+
+		public JComboBox getListe() {
+			return liste;
+		}
+		public JButton getWeiter() {
+			return buttonWeiter;
+		}
+		public Integer [] getAnahlSpieler() {
+			return anzahlSpieler;
+		}
+		
 	         
 }
 
