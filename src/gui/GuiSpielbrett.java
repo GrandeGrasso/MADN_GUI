@@ -136,10 +136,10 @@ public class GuiSpielbrett {
 		
 		pnlAdd.add(Box.createVerticalGlue());
 		
-//		pnlAdd.add(imageFigurRot);
-//		pnlAdd.add(imageFigurBlau);
-//		pnlAdd.add(imageFigurGelb);
-//		pnlAdd.add(imageFigurGruen);
+		pnlAdd.add(imageFigurRot);
+		pnlAdd.add(imageFigurBlau);
+		pnlAdd.add(imageFigurGelb);
+		pnlAdd.add(imageFigurGruen);
 		
 		
 		
@@ -433,6 +433,17 @@ public class GuiSpielbrett {
 		imageBrett = new JLabel(new ImageIcon("brett1.jpg")); 		
 		imageWuerfel = new JLabel(new ImageIcon("wuerfel5.jpg"));
 		
+		imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+		imageFigurRot.setToolTipText("Spieler Rot");
+		imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+		imageFigurBlau.setToolTipText("Spieler Blau");
+		
+		imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
+		imageFigurGelb.setToolTipText("Spieler Gelb");
+		
+		imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
+		imageFigurGruen.setToolTipText("Spieler Gruen");
+		
 		
 
 		btnWuerfel= new JButton("würfeln");
@@ -482,9 +493,9 @@ public class GuiSpielbrett {
 		
 			
 		
-				
-	
 		
+	
+	}
 		//auswhahl spieler
 //		if(spieler1.zahl()==4){
 //			
@@ -538,30 +549,30 @@ public class GuiSpielbrett {
 //	
 //	
 //		}
-		
-		rot=new ArrayList<ImageIcon>();
-		for(int i=1;i<=4;i++){
-			rot.add(new ImageIcon("rot"+i+".png"));
-		}
-		
-		
-		blau=new ArrayList<ImageIcon>();
-		for(int i=1; i<=4;i++){
-			blau.add(new ImageIcon("blau"+i+".png"));
-		}
-		
-		gruen=new ArrayList<ImageIcon>();
-		for(int i=1;i<=4;i++){
-			gruen.add(new ImageIcon("gruen"+i+".png"));
-		}
-		
-		gelb=new ArrayList<ImageIcon>();
-		for(int i=1;i<=4;i++){
-			gelb.add(new ImageIcon("gelb"+i+".png"));
-		}
-
-		
-	}
+//		
+//		rot=new ArrayList<ImageIcon>();
+//		for(int i=1;i<=4;i++){
+//			rot.add(new ImageIcon("rot"+i+".png"));
+//		}
+//		
+//		
+//		blau=new ArrayList<ImageIcon>();
+//		for(int i=1; i<=4;i++){
+//			blau.add(new ImageIcon("blau"+i+".png"));
+//		}
+//		
+//		gruen=new ArrayList<ImageIcon>();
+//		for(int i=1;i<=4;i++){
+//			gruen.add(new ImageIcon("gruen"+i+".png"));
+//		}
+//		
+//		gelb=new ArrayList<ImageIcon>();
+//		for(int i=1;i<=4;i++){
+//			gelb.add(new ImageIcon("gelb"+i+".png"));
+//		}
+//
+//		
+//	}
 	
 	public Spieler1AuswahlDialog getSpieler1(){
 		return spieler1;
