@@ -8,9 +8,7 @@ public class StartFenster {
 	
 		new DialogFenster();
 		
-//		new GuiSpielbrett();
-		
-//		new Spieler1AuswahlDialog();
+
 		
 		
 

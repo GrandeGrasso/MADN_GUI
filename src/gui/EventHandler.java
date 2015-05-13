@@ -22,8 +22,8 @@ public class EventHandler implements ActionListener{
 	 Spieler4AuswahlDialog spieler4AuswahlDialog;
 	 GuiSpielbrett guiSpielbrett;
 	 
-	 Spiel play;
-	 Spieler sp;
+//	 Spiel play;
+//	 Spieler sp;
 		
 	
 	
