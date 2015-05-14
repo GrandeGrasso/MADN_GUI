@@ -402,6 +402,10 @@ public class GuiSpielbrett {
 			
 		}
 		
+		//todo farbe der figuren auf start setzen
+		// welche der farbe der spieler angepasst werden muss
+		
+		
 
 		// rote Spielfiguren werden auf rote Startfelder gesetzt 
 		startRot.get(0).setIcon(figurRot1);
