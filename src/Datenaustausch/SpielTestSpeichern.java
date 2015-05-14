@@ -7,11 +7,7 @@ import interfaces.iDatenzugriff;
 
 
 
-/**
- * Klasse zum testen von speichern
- * @author Gruppe A2
- *
- */
+
 public class SpielTestSpeichern {
 	public static void main(String []args){
 		iDatenzugriff d=new DatenzugriffSerialisiert();

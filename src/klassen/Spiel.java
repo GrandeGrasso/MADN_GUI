@@ -5,10 +5,7 @@ import interfaces.iBediener;
 
 import java.io.Serializable;
 import java.util.*;
-/**
- * Ein ganzes Spiel wird erzeugt
- * @author Gruppe A2
- */
+
 public class Spiel implements iBediener , Serializable {
 	private static final long serialVersionUID = 1L;
 

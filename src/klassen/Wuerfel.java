@@ -2,11 +2,7 @@ package klassen;
 
 import java.io.Serializable;
 
-/**
- * Es wird ein Wuerfel erzeugt
- * @author Gruppe A2
- *
- */
+
  
 public class Wuerfel implements Serializable {
 	private static final long serialVersionUID = 1L; 

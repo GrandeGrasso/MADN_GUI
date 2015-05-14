@@ -1,10 +1,7 @@
 package klassen;
 
-/**
- * eine Klasse fuer die KI
- * @author A2
- *
- */
+
+
  
 import java.io.Serializable;
 import java.util.ArrayList;

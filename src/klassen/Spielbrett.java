@@ -4,11 +4,7 @@ package klassen;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * Ein Spielbrett wird erzeugt
- * @author Gruppe A2
- *
- */
+
 public class Spielbrett implements Serializable {
 	private static final long serialVersionUID = 1L;
 

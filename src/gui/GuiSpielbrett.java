@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -62,10 +64,6 @@ public class GuiSpielbrett {
 	
 	int [] zahl;
 	
-	private ArrayList<ImageIcon>rot;
-	private ArrayList<ImageIcon>blau;
-	private ArrayList<ImageIcon>gruen;
-	private ArrayList<ImageIcon>gelb;
 	
 	private ArrayList<JButton>startRot;
 	private ArrayList<JButton>startBlau;
@@ -87,6 +85,30 @@ public class GuiSpielbrett {
 	JLabel sp2;
 	JLabel sp3;
 	JLabel sp4;
+	
+
+	ImageIcon figurRot1 =new ImageIcon("figurRot1.png");
+	ImageIcon figurRot2=new ImageIcon("figurRot2.png");
+	ImageIcon figurRot3 =new ImageIcon("figurRot3.png");
+	ImageIcon figurRot4 =new ImageIcon("figurRot4.png");
+	
+	ImageIcon figurBlau1 =new ImageIcon("figurBlau1.png");
+	ImageIcon figurBlau2=new ImageIcon("figurBlau2.png");
+	ImageIcon figurBlau3 =new ImageIcon("figurBlau3.png");
+	ImageIcon figurBlau4 =new ImageIcon("figurBlau4.png");
+	
+	ImageIcon figurGruen1 =new ImageIcon("figurGruen1.png");
+	ImageIcon figurGruen2=new ImageIcon("figurGruen2.png");
+	ImageIcon figurGruen3 =new ImageIcon("figurGruen3.png");
+	ImageIcon figurGruen4 =new ImageIcon("figurGruen4.png");
+	
+	ImageIcon figurGelb1 =new ImageIcon("figurGelb1.png");
+	ImageIcon figurGelb2=new ImageIcon("figurGelb2.png");
+	ImageIcon figurGelb3 =new ImageIcon("figurGelb3.png");
+	ImageIcon figurGelb4 =new ImageIcon("figurGelb4.png");
+	
+	
+	
 	
 	
 	
@@ -173,66 +195,73 @@ public class GuiSpielbrett {
 		message.setMessageLines(1000);
 		
 	
+		//buttons fuer die roten Startfelder werden gesetzt
 		startRot = new ArrayList<JButton>();
 		for(int i=0; i<=3; i++){
 			startRot.add(new JButton());
 			imageBrett.add(startRot.get(i));
-			startRot.get(i).setBorderPainted(true);
+			startRot.get(i).setBorderPainted(false);
 			startRot.get(i).setContentAreaFilled(false);
 			startRot.get(i).addActionListener(new EventHandler(this));
 			startRot.get(i).setActionCommand("feld");
 		}
+	
+	
+		startRot.get(0).setBounds(94, 19, 40, 50);
+		startRot.get(1).setBounds(50, 19, 40, 50);
+		startRot.get(2).setBounds(50,64, 40, 50);
+		startRot.get(3).setBounds(94, 64,40, 50);
 		
-		startRot.get(0).setBounds(100, 25, 25, 34);
-		startRot.get(1).setBounds(55, 25, 25, 34);
-		startRot.get(2).setBounds(55,70, 25, 34);
-		startRot.get(3).setBounds(100, 70, 25, 34);
 		
+		// buttons fuer die blauen Startfelder werden gesetzt
 		startBlau = new ArrayList<JButton>();
 		
 		for(int i=0; i<=3; i++){
 			startBlau.add(new JButton());
 			imageBrett.add(startBlau.get(i));
-			startBlau.get(i).setBorderPainted(true);
+			startBlau.get(i).setBorderPainted(false);
 			startBlau.get(i).setContentAreaFilled(false);
 			startBlau.get(i).addActionListener(new EventHandler(this));
 			startBlau.get(i).setActionCommand("feld");
 		}
-		startBlau.get(0).setBounds(482, 25, 25, 34);
-		startBlau.get(1).setBounds(437, 25, 25, 34);
-		startBlau.get(2).setBounds(437, 70, 25, 34);
-		startBlau.get(3).setBounds(482, 70, 25, 34);
+		startBlau.get(0).setBounds(475, 19, 40, 50);
+		startBlau.get(1).setBounds(432, 19, 40, 50);
+		startBlau.get(2).setBounds(432, 64, 40, 50);
+		startBlau.get(3).setBounds(475, 63, 40, 50);
 		
-//		startfelder
+		
+		// buttons fuer die gruenen Startfelder werden gesetzt
 		startGruen = new ArrayList<JButton>();
 		
 		for(int i=0; i<=3; i++){
 			startGruen.add(new JButton());
 			imageBrett.add(startGruen.get(i));
-			startGruen.get(i).setBorderPainted(true);
+			startGruen.get(i).setBorderPainted(false);
 			startGruen.get(i).setContentAreaFilled(false);
 			startGruen.get(i).addActionListener(new EventHandler(this));
 			startGruen.get(i).setActionCommand("feld");
 		}
-		startGruen.get(0).setBounds(482, 405, 25, 34);
-		startGruen.get(1).setBounds(437, 405, 25, 34);
-		startGruen.get(2).setBounds(437, 450, 25, 34);
-		startGruen.get(3).setBounds(482, 450, 25, 34);
+		startGruen.get(0).setBounds(475, 400, 40, 50);
+		startGruen.get(1).setBounds(432, 400, 40, 50);
+		startGruen.get(2).setBounds(432, 445, 40, 50);
+		startGruen.get(3).setBounds(475, 445, 40, 50);
 		
+		
+		// buttons fuer die gelben Startfelder werden gesetzt
 		startGelb = new ArrayList<JButton>();
 		
 		for(int i=0; i<=3; i++){
 			startGelb.add(new JButton());
 			imageBrett.add(startGelb.get(i));
-			startGelb.get(i).setBorderPainted(true);
+			startGelb.get(i).setBorderPainted(false);
 			startGelb.get(i).setContentAreaFilled(false);
 			startGelb.get(i).addActionListener(new EventHandler(this));
 			startGelb.get(i).setActionCommand("feld");
 		}
-		startGelb.get(0).setBounds(100, 405, 25, 34);
-		startGelb.get(1).setBounds(55, 405, 25, 34);
-		startGelb.get(2).setBounds(55,450, 25, 34);
-		startGelb.get(3).setBounds(100, 450, 25, 34);
+		startGelb.get(0).setBounds(94, 400, 40, 50);
+		startGelb.get(1).setBounds(50, 400, 40, 50);
+		startGelb.get(2).setBounds(94, 445, 40, 50);
+		startGelb.get(3).setBounds(50, 445, 40, 50);
 		
 		
 		//endfelder
@@ -349,44 +378,7 @@ public class GuiSpielbrett {
 		felder.get(39).setBounds(58,240,25, 34);
 		
 		
-		if(spieler1.zahl()==1){
-			
-			Color farbe =spieler1.farbAuswahl((String) spieler1.getArtAuswahl().
-					getSelectedItem());
-			
-			if(farbe==Color.RED){
-				felder.get(10).setIcon(rot.get(0));
-				startRot.get(1).setIcon(rot.get(1));
-				startRot.get(2).setIcon(rot.get(2));
-				startRot.get(3).setIcon(rot.get(3));
-			}
-			
-			else if(farbe==Color.BLUE){
-				startBlau.get(0).setIcon(blau.get(0));
-				startBlau.get(1).setIcon(blau.get(1));
-				startBlau.get(2).setIcon(blau.get(2));
-				startBlau.get(3).setIcon(blau.get(3));
-				
-			}
-			
-			else if(farbe==Color.GREEN){
-				startGruen.get(0).setIcon(gruen.get(0));
-				startGruen.get(1).setIcon(blau.get(1));
-				startGruen.get(2).setIcon(blau.get(2));
-				startGruen.get(3).setIcon(gruen.get(3));
-				
-			}
-			
-			else if(farbe==Color.YELLOW){
-				startGelb.get(0).setIcon(gelb.get(0));
-				startGelb.get(1).setIcon(gelb.get(1));
-				startGelb.get(2).setIcon(gelb.get(2));
-				startGelb.get(3).setIcon(gelb.get(3));
-				
-			}
-			
-		}
-		
+
 		if(spieler1.zahl()==4){
 			pnlAdd.add(imageFigurRot);
 			pnlAdd.add(imageFigurBlau);
@@ -410,7 +402,40 @@ public class GuiSpielbrett {
 			
 		}
 		
+
+		// rote Spielfiguren werden auf rote Startfelder gesetzt 
+		startRot.get(0).setIcon(figurRot1);
+		startRot.get(1).setIcon(figurRot2);
+		startRot.get(2).setIcon(figurRot3);
+		startRot.get(3).setIcon(figurRot4);
 		
+		
+		// blaue Spielfiguren werden auf blaue Startfelder gesetzt 
+		startBlau.get(0).setIcon(figurBlau1);
+		startBlau.get(1).setIcon(figurBlau2);
+		startBlau.get(2).setIcon(figurBlau3);
+		startBlau.get(3).setIcon(figurBlau4);
+		
+		
+		// gruene Spielfiguren werden auf gruene Startfelder gesetzt
+		startGruen.get(0).setIcon(figurGruen1);
+		startGruen.get(1).setIcon(figurGruen2);
+		startGruen.get(2).setIcon(figurGruen3);
+		startGruen.get(3).setIcon(figurGruen4);
+		
+		
+		// gelbe Spielfiguren werden auf gruene Startfelder gesetzt
+		startGelb.get(0).setIcon(figurGelb1);
+		startGelb.get(1).setIcon(figurGelb2);
+		startGelb.get(2).setIcon(figurGelb3);
+		startGelb.get(3).setIcon(figurGelb4);
+		
+		
+		
+		
+		
+		
+	
 		
 	}
 		
@@ -554,29 +579,8 @@ public class GuiSpielbrett {
 	
 		}
 		
-		rot=new ArrayList<ImageIcon>();
-		for(int i=1;i<=4;i++){
-			rot.add(new ImageIcon("rot"+i+".png"));
-		}
-		
-		
-		blau=new ArrayList<ImageIcon>();
-		for(int i=1; i<=4;i++){
-			blau.add(new ImageIcon("blau"+i+".png"));
-		}
-		
-		gruen=new ArrayList<ImageIcon>();
-		for(int i=1;i<=4;i++){
-			gruen.add(new ImageIcon("gruen"+i+".png"));
-		}
-		
-		gelb=new ArrayList<ImageIcon>();
-		for(int i=1;i<=4;i++){
-			gelb.add(new ImageIcon("gelb"+i+".png"));
-		}
 
-		
-	}
+    }
 
 	public Spieler1AuswahlDialog getSpieler1(){
 		return spieler1;
@@ -658,22 +662,7 @@ public class GuiSpielbrett {
 		return btnFertig;
 	}
 	
-	public ArrayList<ImageIcon> getRot(){
-		return rot;
-	}
-	
-	public ArrayList<ImageIcon> getBlau(){
-		return blau;
-	}
-	
-	public ArrayList<ImageIcon> getGruen(){
-		return gruen;
-	}
-	
-	public ArrayList<ImageIcon> getGelb(){
-		return gelb;
-	}
-	
+
 	
 
 	}

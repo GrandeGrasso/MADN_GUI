@@ -3,13 +3,6 @@ package klassen;
 import java.io.Serializable;
 
 
-
-/**
- * die Unterklasse KI Defensiv von KI wird erzeugt
- * @author Gruppe A2
- *
- */
- 
 public class KI_Defensiv extends KI implements Serializable {
 	private static final long serialVersionUID = 1L;
  

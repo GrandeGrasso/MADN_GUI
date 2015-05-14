@@ -4,11 +4,7 @@ package klassen;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Es wird ein Spieler erzeugt
- * @author Gruppe A2
- *
- */
+
 public class Spieler implements Serializable {
 	private static final long serialVersionUID = 1L; 
  

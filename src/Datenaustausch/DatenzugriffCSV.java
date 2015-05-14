@@ -14,11 +14,7 @@ import java.util.List;
 
 import klassen.Spiel;
 
-/**
- * die klasse datenzugriffCSV erzeugt csv dateien
- * @author Kati
- *
- */
+
 
 public class DatenzugriffCSV implements iDatenzugriff {
 

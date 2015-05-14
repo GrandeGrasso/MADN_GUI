@@ -4,11 +4,6 @@ import klassen.Spiel;
 import interfaces.iDatenzugriff;
 
 
-/**
- * Klasse zum testen für serialisierung laden
- * @author Gruppe2
- *
- */
 
 public class SpielTestLaden {
 	

@@ -2,11 +2,7 @@ package klassen;
 
 import java.io.Serializable;
 
-/**
- * Die vorhandene Farbauswahl der jeweiligen Spielfiguren und der Spieler
- * @author Gruppe A2
- *
- */
+
  
 public enum eFarben implements Serializable {
 	/**

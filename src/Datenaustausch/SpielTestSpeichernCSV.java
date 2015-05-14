@@ -5,11 +5,6 @@ package Datenaustausch;
 import interfaces.iDatenzugriff;
 
 
-
-
-/**
- * klasse zum testen für CSV speichern
- */
 import java.io.PrintWriter;
 
 import klassen.eFarben;

@@ -1,11 +1,6 @@
 package klassen;
 
 
-/**
- * fuehrt das ganze Spiel aus 
- * @author Gruppe A2
- *
- */
 public class SpielTest {
 
 	public static void main(String[] args) {

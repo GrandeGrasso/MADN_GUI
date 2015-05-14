@@ -2,12 +2,6 @@ package klassen;
 
 import java.io.Serializable;
 
-
-/**
- * Es wird eine Spielfigur erzeugt
- * @author Gruppe A2
- *
- */
 public class Spielfigur  implements Serializable {
 	private static final long serialVersionUID = 1L; 
  

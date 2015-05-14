@@ -10,11 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import klassen.Spiel;
-/**
- * Klasse DatenzugriffSerialisiert
- * @author Gruppe A2
- *
- */
+
 public class DatenzugriffSerialisiert implements iDatenzugriff{
 /**
  * methode speichern aus dem Interface iDatenzugriff wird implementiert
