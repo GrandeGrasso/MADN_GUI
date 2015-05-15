@@ -168,7 +168,7 @@ public class Spieler4AuswahlDialog extends JOptionPane {
 			case"Blau":
 				getFarbe=Color.BLUE;
 				break;
-			case"Grün":
+			case"Gruen":
 				getFarbe=Color.GREEN;
 				break;
 			case"Gelb":

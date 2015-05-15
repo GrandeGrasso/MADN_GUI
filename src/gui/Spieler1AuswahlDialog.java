@@ -42,6 +42,8 @@ public class Spieler1AuswahlDialog extends JOptionPane{
 	
 	 String[] art = {"Mensch", "KI Aggressiv" , "KI Defensiv"};
 	 String[] farbe = {"Rot","Blau", "Gruen", "Gelb"};
+	 
+	
 	
 	
 	
@@ -108,6 +110,7 @@ public class Spieler1AuswahlDialog extends JOptionPane{
 		spielStarten.setBounds(300, 220, 120, 30);	
 		
 	
+		
 	}
 	
 	
@@ -168,7 +171,7 @@ public class Spieler1AuswahlDialog extends JOptionPane{
 			case"Blau":
 				getFarbe=Color.BLUE;
 				break;
-			case"Grün":
+			case"Gruen":
 				getFarbe=Color.GREEN;
 				break;
 			case"Gelb":

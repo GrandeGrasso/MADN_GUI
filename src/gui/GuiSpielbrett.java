@@ -378,68 +378,250 @@ public class GuiSpielbrett {
 		felder.get(39).setBounds(58,240,25, 34);
 		
 		
+		
+		
+		// figuren werden von spieler 1 auf die startfelder
+				// mit der entsprechenden Farbe gesetzt die er gewaehlt hat
+				
+				if(spieler1.zahl()==1){
+					Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
+							getSelectedItem());
 
-		if(spieler1.zahl()==4){
-			pnlAdd.add(imageFigurRot);
-			pnlAdd.add(imageFigurBlau);
-			pnlAdd.add(imageFigurGelb);
-			pnlAdd.add(imageFigurGruen);
-		}
-		else if(spieler1.zahl()==3){
-		pnlAdd.add(imageFigurRot);
-		pnlAdd.add(imageFigurBlau);
-		pnlAdd.add(imageFigurGelb);
-		
-		}
-		else if(spieler1.zahl()==2){
-			pnlAdd.add(imageFigurRot);
-			pnlAdd.add(imageFigurBlau);
-		
+					if(	farbe1 == Color.RED){
+				// rote Spielfiguren werden auf rote Startfelder gesetzt 
+				startRot.get(0).setIcon(figurRot1);
+				startRot.get(1).setIcon(figurRot2);
+				startRot.get(2).setIcon(figurRot3);
+				startRot.get(3).setIcon(figurRot4);
+				
+				pnlAdd.add(imageFigurRot);
+					}
+				
+					
+					
+					else if(farbe1 == Color.BLUE){
+				// blaue Spielfiguren werden auf blaue Startfelder gesetzt 
+				startBlau.get(0).setIcon(figurBlau1);
+				startBlau.get(1).setIcon(figurBlau2);
+				startBlau.get(2).setIcon(figurBlau3);
+				startBlau.get(3).setIcon(figurBlau4);
+				
+				pnlAdd.add(imageFigurBlau);
+					}
+					
+				
+					else if( farbe1 == Color.GREEN){
+				// gruene Spielfiguren werden auf gruene Startfelder gesetzt
+				startGruen.get(0).setIcon(figurGruen1);
+				startGruen.get(1).setIcon(figurGruen2);
+				startGruen.get(2).setIcon(figurGruen3);
+				startGruen.get(3).setIcon(figurGruen4);
+				
+				pnlAdd.add(imageFigurGruen);
+					}
+				
+				
+					else if(farbe1 == Color.ORANGE){
+				// gelbe Spielfiguren werden auf gruene Startfelder gesetzt
+				startGelb.get(0).setIcon(figurGelb1);
+				startGelb.get(1).setIcon(figurGelb2);
+				startGelb.get(2).setIcon(figurGelb3);
+				startGelb.get(3).setIcon(figurGelb4);
+				
+				pnlAdd.add(imageFigurGelb);
+				
+				
+					}
+					
+			}
+				
+				// figuren werden von spieler 2 auf die startfelder
+				// mit der entsprechenden Farbe gesetzt die er gewaehlt hat
+				if(spieler1.zahl()==2){
+					Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
+							getSelectedItem());
+					Color farbe2 = spieler2.farbAuswahl((String)spieler2.getFarbAuswahl().
+							getSelectedItem());
+					
+					
+					
+					if(	farbe1 == Color.RED ||farbe2 == Color.RED ){
+						// rote Spielfiguren werden auf rote Startfelder gesetzt 
+						startRot.get(0).setIcon(figurRot1);
+						startRot.get(1).setIcon(figurRot2);
+						startRot.get(2).setIcon(figurRot3);
+						startRot.get(3).setIcon(figurRot4);
+						
+						pnlAdd.add(imageFigurRot);
+							}
+						
+							
+							
+							if(farbe1 == Color.BLUE || farbe2 == Color.BLUE){
+						// blaue Spielfiguren werden auf blaue Startfelder gesetzt 
+						startBlau.get(0).setIcon(figurBlau1);
+						startBlau.get(1).setIcon(figurBlau2);
+						startBlau.get(2).setIcon(figurBlau3);
+						startBlau.get(3).setIcon(figurBlau4);
+						
+						pnlAdd.add(imageFigurBlau);
+							}
+							
+						
+							if( farbe1 == Color.GREEN|| farbe2 == Color.GREEN){
+						// gruene Spielfiguren werden auf gruene Startfelder gesetzt
+						startGruen.get(0).setIcon(figurGruen1);
+						startGruen.get(1).setIcon(figurGruen2);
+						startGruen.get(2).setIcon(figurGruen3);
+						startGruen.get(3).setIcon(figurGruen4);
+						
+						pnlAdd.add(imageFigurGruen);
+							}
+						
+						
+							if(farbe1 == Color.ORANGE || farbe2 == Color.ORANGE){
+						// gelbe Spielfiguren werden auf gruene Startfelder gesetzt
+						startGelb.get(0).setIcon(figurGelb1);
+						startGelb.get(1).setIcon(figurGelb2);
+						startGelb.get(2).setIcon(figurGelb3);
+						startGelb.get(3).setIcon(figurGelb4);
+						
+						pnlAdd.add(imageFigurGelb);
+						
+						
+							}
+							
+					}
+				
+				// figuren werden von spieler 3 auf die startfelder
+				// mit der entsprechenden Farbe gesetzt die er gewaehlt hat
+				
+				if(spieler1.zahl()==3){
+					Color farbe1 = spieler1.farbAuswahl((String)spieler1.
+							getFarbAuswahl().getSelectedItem());
+					Color farbe2 = spieler2.farbAuswahl((String)spieler2.
+							getFarbAuswahl().getSelectedItem());
+					Color farbe3 = spieler3.farbAuswahl((String)spieler3.
+							getFarbAuswahl().getSelectedItem());
+					
+					if(farbe1 == Color.RED||farbe2 == Color.RED||farbe3 == Color.RED){
+						// rote Spielfiguren werden auf rote Startfelder gesetzt 
+						startRot.get(0).setIcon(figurRot1);
+						startRot.get(1).setIcon(figurRot2);
+						startRot.get(2).setIcon(figurRot3);
+						startRot.get(3).setIcon(figurRot4);
+						
+						pnlAdd.add(imageFigurRot);
+					}
+					if(farbe1 == Color.BLUE||farbe2== Color.BLUE||farbe3== Color.BLUE){
+						// rote Spielfiguren werden auf blaue Startfelder gesetzt 
+						startBlau.get(0).setIcon(figurBlau1);
+						startBlau.get(1).setIcon(figurBlau2);
+						startBlau.get(2).setIcon(figurBlau3);
+						startBlau.get(3).setIcon(figurBlau4);
+						
+						pnlAdd.add(imageFigurBlau);
+					}
+					if(farbe1 == Color.GREEN||farbe2 == Color.GREEN||farbe3 == Color.GREEN){
+						// rote Spielfiguren werden auf gruene Startfelder gesetzt 
+						startGruen.get(0).setIcon(figurGruen1);
+						startGruen.get(1).setIcon(figurGruen2);
+						startGruen.get(2).setIcon(figurGruen3);
+						startGruen.get(3).setIcon(figurGruen4);
+						
+						pnlAdd.add(imageFigurGruen);
+					}
+					if(farbe1 == Color.ORANGE||farbe2 == Color.ORANGE||farbe3 == Color.ORANGE){
+						// rote Spielfiguren werden auf gelbe Startfelder gesetzt 
+						startGelb.get(0).setIcon(figurGelb1);
+						startGelb.get(1).setIcon(figurGelb2);
+						startGelb.get(2).setIcon(figurGelb3);
+						startGelb.get(3).setIcon(figurGelb4);
+						
+						pnlAdd.add(imageFigurGelb);
+					}
+				}
+				
+				// figuren werden von spieler 3 auf die startfelder
+				// mit der entsprechenden Farbe gesetzt die er gewaehlt hat
+				
+				if(spieler1.zahl()==4){
+					Color farbe1 = spieler1.farbAuswahl((String)spieler1.
+							getFarbAuswahl().getSelectedItem());
+					Color farbe2 = spieler2.farbAuswahl((String)spieler2.
+							getFarbAuswahl().getSelectedItem());
+					Color farbe3 = spieler3.farbAuswahl((String)spieler3.
+							getFarbAuswahl().getSelectedItem());
+					Color farbe4 = spieler4.farbAuswahl((String)spieler4.
+							getFarbAuswahl().getSelectedItem());
+					
+					if(farbe1 == Color.RED||farbe2 == Color.RED||farbe3 == Color.RED||farbe4 == Color.RED){
+						// rote Spielfiguren werden auf rote Startfelder gesetzt 
+						startRot.get(0).setIcon(figurRot1);
+						startRot.get(1).setIcon(figurRot2);
+						startRot.get(2).setIcon(figurRot3);
+						startRot.get(3).setIcon(figurRot4);
+						
+						pnlAdd.add(imageFigurRot);
+					}
+					if(farbe1 == Color.BLUE||farbe2== Color.BLUE||farbe3 == Color.BLUE||farbe4== Color.BLUE){
+						// rote Spielfiguren werden auf blaue Startfelder gesetzt 
+						startBlau.get(0).setIcon(figurBlau1);
+						startBlau.get(1).setIcon(figurBlau2);
+						startBlau.get(2).setIcon(figurBlau3);
+						startBlau.get(3).setIcon(figurBlau4);
+						
+						pnlAdd.add(imageFigurBlau);
+					}
+					if(farbe1 == Color.GREEN||farbe2 == Color.GREEN||farbe3 == Color.GREEN||farbe4 == Color.GREEN){
+						// rote Spielfiguren werden auf gruene Startfelder gesetzt 
+						startGruen.get(0).setIcon(figurGruen1);
+						startGruen.get(1).setIcon(figurGruen2);
+						startGruen.get(2).setIcon(figurGruen3);
+						startGruen.get(3).setIcon(figurGruen4);
+						
+						pnlAdd.add(imageFigurGruen);
+					}
+					if(farbe1 == Color.ORANGE||farbe2 == Color.ORANGE||farbe3 == Color.YELLOW||farbe4 == Color.ORANGE){
+						// rote Spielfiguren werden auf gelbe Startfelder gesetzt 
+						startGelb.get(0).setIcon(figurGelb1);
+						startGelb.get(1).setIcon(figurGelb2);
+						startGelb.get(2).setIcon(figurGelb3);
+						startGelb.get(3).setIcon(figurGelb4);
+						
+						pnlAdd.add(imageFigurGelb);
+					}
+				}
 			
-		}
-		else if(spieler1.zahl()==1){
-			pnlAdd.add(imageFigurRot);
-			
-		}
-		
-		//todo farbe der figuren auf start setzen
-		// welche der farbe der spieler angepasst werden muss
 		
 		
 
-		// rote Spielfiguren werden auf rote Startfelder gesetzt 
-		startRot.get(0).setIcon(figurRot1);
-		startRot.get(1).setIcon(figurRot2);
-		startRot.get(2).setIcon(figurRot3);
-		startRot.get(3).setIcon(figurRot4);
-		
-		
-		// blaue Spielfiguren werden auf blaue Startfelder gesetzt 
-		startBlau.get(0).setIcon(figurBlau1);
-		startBlau.get(1).setIcon(figurBlau2);
-		startBlau.get(2).setIcon(figurBlau3);
-		startBlau.get(3).setIcon(figurBlau4);
-		
-		
-		// gruene Spielfiguren werden auf gruene Startfelder gesetzt
-		startGruen.get(0).setIcon(figurGruen1);
-		startGruen.get(1).setIcon(figurGruen2);
-		startGruen.get(2).setIcon(figurGruen3);
-		startGruen.get(3).setIcon(figurGruen4);
-		
-		
-		// gelbe Spielfiguren werden auf gruene Startfelder gesetzt
-		startGelb.get(0).setIcon(figurGelb1);
-		startGelb.get(1).setIcon(figurGelb2);
-		startGelb.get(2).setIcon(figurGelb3);
-		startGelb.get(3).setIcon(figurGelb4);
+//		if(spieler1.zahl()==4){
+//			pnlAdd.add(imageFigurRot);
+//			pnlAdd.add(imageFigurBlau);
+//			pnlAdd.add(imageFigurGelb);
+//			pnlAdd.add(imageFigurGruen);
+//		}
+//		else if(spieler1.zahl()==3){
+//		pnlAdd.add(imageFigurRot);
+//		pnlAdd.add(imageFigurBlau);
+//		pnlAdd.add(imageFigurGelb);
+//		
+//		}
+//		else if(spieler1.zahl()==2){
+//			pnlAdd.add(imageFigurRot);
+//			pnlAdd.add(imageFigurBlau);
+//		
+//			
+//		}
+//		else if(spieler1.zahl()==1){
+//			pnlAdd.add(imageFigurRot);
+//			
+//		}
+//		
 		
 		
 		
-		
-		
-		
-	
 		
 	}
 		
@@ -530,59 +712,59 @@ public class GuiSpielbrett {
 	
 	
 		//auswhahl spieler
-		if(spieler1.zahl()==4){
+				if(spieler1.zahl()==4){
+					
+					
+					sp1=new JLabel(spieler1.getNameEingabe().getText());
+					sp1.setForeground(spieler1.farbAuswahl(
+							(String)spieler1.getFarbAuswahl().getSelectedItem()));
+					
+				sp1.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
+					
+					
+					
+					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+					imageFigurRot.setForeground (spieler1.farbAuswahl(
+							(String)spieler1.getFarbAuswahl().getSelectedItem()));
+					
+					imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+					imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+					
+					imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
+					imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
+					
+					imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
+					imageFigurGruen.setToolTipText(spieler4.getNameEingabe().getText());
+					
+				}
+				else if(spieler1.zahl()==3){
+					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+					
+					imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+					imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+					
+					imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
+					imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
+					
+				}
+				else if(spieler1.zahl()==2){
+					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+					
+					imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
+					imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+			
+					
+				}
+				else if(spieler1.zahl()==1){
+					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
+					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
 			
 			
-			sp1=new JLabel(spieler1.getNameEingabe().getText());
-			sp1.setForeground(spieler1.farbAuswahl(
-					(String)spieler1.getFarbAuswahl().getSelectedItem()));
-			
-		sp1.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
-			
-			
-			
-			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-			imageFigurRot.setForeground (spieler1.farbAuswahl(
-					(String)spieler1.getFarbAuswahl().getSelectedItem()));
-			
-			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-			
-			imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-			imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
-			
-			imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
-			imageFigurGruen.setToolTipText(spieler4.getNameEingabe().getText());
-			
-		}
-		else if(spieler1.zahl()==3){
-			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-			
-			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-			
-			imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-			imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
-			
-		}
-		else if(spieler1.zahl()==2){
-			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-			
-			imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-			imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-	
-			
-		}
-		else if(spieler1.zahl()==1){
-			imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-			imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-	
-	
-		}
-		
+				}
+				
 
     }
 
