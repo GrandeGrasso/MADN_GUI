@@ -395,6 +395,8 @@ public class GuiSpielbrett {
 				startRot.get(3).setIcon(figurRot4);
 				
 				pnlAdd.add(imageFigurRot);
+				
+				imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
 					}
 				
 					
@@ -595,45 +597,9 @@ public class GuiSpielbrett {
 			
 		
 		
-
-//		if(spieler1.zahl()==4){
-//			pnlAdd.add(imageFigurRot);
-//			pnlAdd.add(imageFigurBlau);
-//			pnlAdd.add(imageFigurGelb);
-//			pnlAdd.add(imageFigurGruen);
-//		}
-//		else if(spieler1.zahl()==3){
-//		pnlAdd.add(imageFigurRot);
-//		pnlAdd.add(imageFigurBlau);
-//		pnlAdd.add(imageFigurGelb);
-//		
-//		}
-//		else if(spieler1.zahl()==2){
-//			pnlAdd.add(imageFigurRot);
-//			pnlAdd.add(imageFigurBlau);
-//		
-//			
-//		}
-//		else if(spieler1.zahl()==1){
-//			pnlAdd.add(imageFigurRot);
-//			
-//		}
-//		
-		
-		
-		
 		
 	}
 		
-		
-	
-		
-		
-		
-	
-	
-	
-	
 
 	private void createWidgets(){
 		
@@ -649,15 +615,15 @@ public class GuiSpielbrett {
 		imageWuerfel = new JLabel(new ImageIcon("wuerfel5.jpg"));
 		
 		imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-		imageFigurRot.setToolTipText("Spieler Rot");
+//		imageFigurRot.setToolTipText("Spieler Rot");
 		imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-		imageFigurBlau.setToolTipText("Spieler Blau");
+//		imageFigurBlau.setToolTipText("Spieler Blau");
 		
 		imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-		imageFigurGelb.setToolTipText("Spieler Gelb");
+//		imageFigurGelb.setToolTipText("Spieler Gelb");
 		
 		imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
-		imageFigurGruen.setToolTipText("Spieler Gruen");
+//		imageFigurGruen.setToolTipText("Spieler Gruen");
 		
 		
 
@@ -711,57 +677,218 @@ public class GuiSpielbrett {
 		
 	
 	
-		//auswhahl spieler
+		//auswhahl spieler 
+		// die namen der spieler wird auf den icons angezeit mit der figurfarbe die 
+		// sie gewaehlt haben 
 				if(spieler1.zahl()==4){
 					
-					
-					sp1=new JLabel(spieler1.getNameEingabe().getText());
-					sp1.setForeground(spieler1.farbAuswahl(
-							(String)spieler1.getFarbAuswahl().getSelectedItem()));
-					
-				sp1.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
-					
-					
-					
-					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-					imageFigurRot.setForeground (spieler1.farbAuswahl(
-							(String)spieler1.getFarbAuswahl().getSelectedItem()));
-					
-					imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-					imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-					
-					imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-					imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
-					
-					imageFigurGruen = new JLabel(new ImageIcon("figurGruenBild.png"));
-					imageFigurGruen.setToolTipText(spieler4.getNameEingabe().getText());
-					
-				}
-				else if(spieler1.zahl()==3){
-					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-					
-					imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-					imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
-					
-					imageFigurGelb = new JLabel(new ImageIcon("figurGelbBild.png"));
-					imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
-					
-				}
-				else if(spieler1.zahl()==2){
-					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
-					
-					imageFigurBlau = new JLabel(new ImageIcon("figurBlauBild.png"));
-					imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+					 Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
+								getSelectedItem());
+
+						if(	farbe1 == Color.RED){
+							imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+						}
+						else if(farbe1==Color.BLUE){
+							imageFigurBlau.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.GREEN){
+							imageFigurGruen.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.ORANGE){
+							imageFigurGelb.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						
+						
+					  Color farbe2 = spieler2.farbAuswahl((String)spieler2.getFarbAuswahl().
+									getSelectedItem());
+
+							if(	farbe2 == Color.RED){
+								imageFigurRot.setToolTipText(spieler2.getNameEingabe().getText());
+							}
+							else if(farbe2==Color.BLUE){
+								imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+							else if(farbe2==Color.GREEN){
+								imageFigurGruen.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+							else if(farbe2==Color.ORANGE){
+								imageFigurGelb.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
 			
+							  Color farbe3 = spieler3.farbAuswahl((String)spieler3.getFarbAuswahl().
+										getSelectedItem());
+
+								if(	farbe3 == Color.RED){
+									imageFigurRot.setToolTipText(spieler3.getNameEingabe().getText());
+								}
+								else if(farbe3==Color.BLUE){
+									imageFigurBlau.setToolTipText(spieler3.getNameEingabe().getText());
+									
+								}
+								else if(farbe3==Color.GREEN){
+									imageFigurGruen.setToolTipText(spieler3.getNameEingabe().getText());
+									
+								}
+								else if(farbe3==Color.ORANGE){
+									imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
+									
+								}
+								
+								 Color farbe4 = spieler4.farbAuswahl((String)spieler4.getFarbAuswahl().
+											getSelectedItem());
+
+									if(	farbe4 == Color.RED){
+										imageFigurRot.setToolTipText(spieler4.getNameEingabe().getText());
+									}
+									else if(farbe4==Color.BLUE){
+										imageFigurBlau.setToolTipText(spieler4.getNameEingabe().getText());
+										
+									}
+									else if(farbe4==Color.GREEN){
+										imageFigurGruen.setToolTipText(spieler4.getNameEingabe().getText());
+										
+									}
+									else if(farbe4==Color.ORANGE){
+										imageFigurGelb.setToolTipText(spieler4.getNameEingabe().getText());
+										
+									}
+				
+					
+					
+					
 					
 				}
-				else if(spieler1.zahl()==1){
-					imageFigurRot = new JLabel(new ImageIcon("figurRotBild.png")); 
-					imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+				if(spieler1.zahl()==3){
+					 Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
+								getSelectedItem());
+
+						if(	farbe1 == Color.RED){
+							imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+						}
+						else if(farbe1==Color.BLUE){
+							imageFigurBlau.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.GREEN){
+							imageFigurGruen.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.ORANGE){
+							imageFigurGelb.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						
+						
+					  Color farbe2 = spieler2.farbAuswahl((String)spieler2.getFarbAuswahl().
+									getSelectedItem());
+
+							if(	farbe2 == Color.RED){
+								imageFigurRot.setToolTipText(spieler2.getNameEingabe().getText());
+							}
+							else if(farbe2==Color.BLUE){
+								imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+							else if(farbe2==Color.GREEN){
+								imageFigurGruen.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+							else if(farbe2==Color.ORANGE){
+								imageFigurGelb.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
 			
+							  Color farbe3 = spieler3.farbAuswahl((String)spieler3.getFarbAuswahl().
+										getSelectedItem());
+
+								if(	farbe3 == Color.RED){
+									imageFigurRot.setToolTipText(spieler3.getNameEingabe().getText());
+								}
+								else if(farbe3==Color.BLUE){
+									imageFigurBlau.setToolTipText(spieler3.getNameEingabe().getText());
+									
+								}
+								else if(farbe3==Color.GREEN){
+									imageFigurGruen.setToolTipText(spieler3.getNameEingabe().getText());
+									
+								}
+								else if(farbe3==Color.ORANGE){
+									imageFigurGelb.setToolTipText(spieler3.getNameEingabe().getText());
+									
+								}
+				
+					
+				
+					
+				}
+				if(spieler1.zahl()==2){
+					
+					 Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
+								getSelectedItem());
+
+						if(	farbe1 == Color.RED){
+							imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+						}
+						else if(farbe1==Color.BLUE){
+							imageFigurBlau.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.GREEN){
+							imageFigurGruen.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.ORANGE){
+							imageFigurGelb.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						
+						
+					  Color farbe2 = spieler2.farbAuswahl((String)spieler2.getFarbAuswahl().
+									getSelectedItem());
+
+							if(	farbe2 == Color.RED){
+								imageFigurRot.setToolTipText(spieler2.getNameEingabe().getText());
+							}
+							else if(farbe2==Color.BLUE){
+								imageFigurBlau.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+							else if(farbe2==Color.GREEN){
+								imageFigurGruen.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+							else if(farbe2==Color.ORANGE){
+								imageFigurGelb.setToolTipText(spieler2.getNameEingabe().getText());
+								
+							}
+			
+					}
+				 if(spieler1.zahl()==1){
+					 
+					 Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
+								getSelectedItem());
+
+						if(	farbe1 == Color.RED){
+							imageFigurRot.setToolTipText(spieler1.getNameEingabe().getText());
+						}
+						else if(farbe1==Color.BLUE){
+							imageFigurBlau.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.GREEN){
+							imageFigurGruen.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
+						else if(farbe1==Color.ORANGE){
+							imageFigurGelb.setToolTipText(spieler1.getNameEingabe().getText());
+							
+						}
 			
 				}
 				
