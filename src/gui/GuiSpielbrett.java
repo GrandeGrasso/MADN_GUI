@@ -665,7 +665,7 @@ public class GuiSpielbrett {
 		
 		menu = new JMenuBar();
 		datei= new JMenu("Datei");
-		speichern = new JMenuItem("Speichern");
+		speichern = new JMenuItem("Karte speichern");
 		
 		datei.setForeground(Color.white);
 		speichern.setForeground(Color.BLACK);
@@ -673,7 +673,7 @@ public class GuiSpielbrett {
 		datei.setOpaque(true);
 		
 			
-		
+	
 		
 	
 	
@@ -829,6 +829,8 @@ public class GuiSpielbrett {
 				}
 				if(spieler1.zahl()==2){
 					
+				
+					
 					 Color farbe1 = spieler1.farbAuswahl((String)spieler1.getFarbAuswahl().
 								getSelectedItem());
 
@@ -891,9 +893,25 @@ public class GuiSpielbrett {
 						}
 			
 				}
+				 
+				 
+				 
+					
+					
+							
+								
+	
+	}
 				
-
-    }
+				 
+    
+	
+	
+	
+	
+	
+	
+	
 
 	public Spieler1AuswahlDialog getSpieler1(){
 		return spieler1;

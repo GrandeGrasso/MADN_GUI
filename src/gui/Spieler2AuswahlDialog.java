@@ -107,6 +107,11 @@ public class Spieler2AuswahlDialog extends JOptionPane{
 		spielStarten.setBackground(Color.WHITE);
 		spielStarten.setBounds(300, 220, 120, 30);	
 		
+		int remove = spieler1AuswahlDialog.getFarbAuswahl().getSelectedIndex();
+		farbAuswahl.removeItemAt(remove);
+		
+		
+		
 	
 	}
 	

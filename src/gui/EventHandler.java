@@ -75,7 +75,7 @@ public class EventHandler implements ActionListener{
 			
 			if(name==null || name.length()<2){
 				JOptionPane.showMessageDialog(spieler1AuswahlDialog,
-						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"Name muss mindestens 2 Zeichen enthalten!", 
 						"ERROR!",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -104,7 +104,7 @@ public class EventHandler implements ActionListener{
 			
 			if(name==null || name.length()<2){
 				JOptionPane.showMessageDialog(spieler2AuswahlDialog,
-						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"Name muss mindestens 2 Zeichen enthalten !", 
 						"ERROR!",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -133,7 +133,7 @@ public class EventHandler implements ActionListener{
 			
 			if(name==null || name.length()<2){
 				JOptionPane.showMessageDialog(spieler3AuswahlDialog,
-						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"Name muss mindestens 2 Zeichen enthalten!", 
 						"ERROR!",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -158,7 +158,7 @@ public class EventHandler implements ActionListener{
 			
 			if(name==null || name.length()<2){
 				JOptionPane.showMessageDialog(spieler4AuswahlDialog,
-						"Name muss von 2 bis 10 Zeichen lang sein !", 
+						"Name muss mindestens 2 Zeichen enthalten!", 
 						"ERROR!",
 						JOptionPane.ERROR_MESSAGE);
 			}
