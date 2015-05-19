@@ -52,39 +52,39 @@ import javax.swing.SwingConstants;
 			pnlOben.add(menuBar);
 		
 //		
-			 laden.addActionListener(new OpenAction());
-//			addListener() ;
+//			 laden.addActionListener(new OpenAction());
+			addListener() ;
 			
 		}
 	
 
 		
 		
-		 class OpenAction implements ActionListener {
-		        public void actionPerformed(ActionEvent ae) {
-		            //... Open a file dialog.
-		            int retval = _fileChooser.showOpenDialog(MenuDialogLaden.this);
-		            if (retval == JFileChooser.APPROVE_OPTION) {
-		                //... The user selected a file, get it, use it.
-		                File file = _fileChooser.getSelectedFile();
-
-		     
-		                
-		            }
-		        }
+//		 class OpenAction implements ActionListener {
+//		        public void actionPerformed(ActionEvent ae) {
+//		            //... Open a file dialog.
+//		            int retval = _fileChooser.showOpenDialog(MenuDialogLaden.this);
+//		            if (retval == JFileChooser.APPROVE_OPTION) {
+//		                //... The user selected a file, get it, use it.
+//		                File file = _fileChooser.getSelectedFile();
+//
+//		     
+//		                
+//		            }
+//		        }
+//		
+//		
+//
+//		 }
 		
-		
-
-		 }
-		
-//		private void addListener() {
-//			
-//			laden.addActionListener(new EventHandler(this));
-//			laden.setActionCommand("Spiel Laden");
-//			
-//			
-//			
-//		}
+		private void addListener() {
+			
+			laden.addActionListener(new EventHandler(this));
+			laden.setActionCommand("Spiel Laden");
+			
+			
+			
+		}
 
 		 
 		 }

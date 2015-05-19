@@ -286,6 +286,9 @@ public class EventHandler implements ActionListener{
 		else if(cmd.equals("pdf")){
 			new MenuSpielSpeichern(MenuSpielSpeichern.pdf);
 		}
+		else if(cmd.equals("Spiel Laden")){
+			new  MenuSpielLaden();
+		}
 		
 
 		

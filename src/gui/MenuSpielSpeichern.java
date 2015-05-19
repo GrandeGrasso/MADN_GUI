@@ -74,7 +74,7 @@ public class MenuSpielSpeichern extends JFrame{
 //				SchiffeVersenken.getGame().saveGameSer(pfad);
 				Object options [] = {"OK"};
 				JOptionPane.showOptionDialog(getJFrame(),"Serialisierte Datei erfolgreich gespeichert!", "Erfolg!", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-				
+				System.out.println(pfad);
 				}else{
 					return;
 				}
@@ -113,7 +113,7 @@ public class MenuSpielSpeichern extends JFrame{
 	}
 	public void saveGameSer(String pfad){
 		iDatenzugriff serialisieren = new DatenzugriffSerialisiert();
-		serialisieren.speichern(GuiSpielbrett.gibSpielZurueck(),pfad);
+		serialisieren.speichern(GuiSpielbrett.gibSpielZurueck(),pfad+".ser");
 	}
 	
 	
