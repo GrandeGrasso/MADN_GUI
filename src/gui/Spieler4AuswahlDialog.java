@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import klassen.Spieler;
-import klassen.eFarben;
+import klassen.FarbEnum;
 
 public class Spieler4AuswahlDialog extends JOptionPane {
 	
@@ -145,20 +145,20 @@ public class Spieler4AuswahlDialog extends JOptionPane {
 	
 
 	
-	public eFarben gibFarbe(String farbe){
-		eFarben getFarbe =null;
+	public FarbEnum gibFarbe(String farbe){
+		FarbEnum getFarbe =null;
 		switch(farbe){
 			case"Rot":
-				getFarbe=eFarben.ROT;
+				getFarbe=FarbEnum.ROT;
 				break;
 			case"Blau":
-				getFarbe=eFarben.BLAU;
+				getFarbe=FarbEnum.BLAU;
 				break;
 			case"Gruen":
-				getFarbe=eFarben.GRUEN;
+				getFarbe=FarbEnum.GRUEN;
 				break;
 			case"Gelb":
-				getFarbe=eFarben.GELB;
+				getFarbe=FarbEnum.GELB;
 				break;
 		}
 		return getFarbe;

@@ -7,18 +7,14 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Spiel implements iBediener , Serializable {
-	private static final long serialVersionUID = 1L;
-
-	
+private static final long serialVersionUID = 1L;
 	
 	private Spieler spielerAmZug;
 	private ArrayList <Spieler> spielerlist;
 	private Spielbrett brett;
 	private int spielerAnzahl;
 	private Integer wuerfelZahl;
-	
 
- 
 
 	/**
 	 * der Konstruktor der Klasse Spiel es wird ein neues Spielbrett erzeugt es
@@ -32,46 +28,192 @@ public class Spiel implements iBediener , Serializable {
 		brett = new Spielbrett();
 	}
 	
+	@Override
+	public int ermittleSpielerAmZug(){
+		int i=0;
+		if(spielerAmZug.getFarbe()==FarbEnum.ROT){
+			i=0;
+		}
+		else if(spielerAmZug.getFarbe()==FarbEnum.BLAU){
+			i=1;
+		}
+		else if(spielerAmZug.getFarbe()==FarbEnum.GRUEN){
+			i=2;
+		}
+		else if(spielerAmZug.getFarbe()==FarbEnum.GELB){
+			i=3;
+		}
+		return i;
+	}
+	
+	@Override
+	public int gibFigurKi(){
+		int i=0;
+		if(spielerAmZug.getFarbe()==FarbEnum.ROT){
+			i=spielerAmZug.getKi().ermittleFigur().getId();
+		}
+		else if(spielerAmZug.getFarbe()==FarbEnum.BLAU){
+			i=spielerAmZug.getKi().ermittleFigur().getId();
+		}
+		else if(spielerAmZug.getFarbe()==FarbEnum.GRUEN){
+			i=spielerAmZug.getKi().ermittleFigur().getId();
+		}
+		else if(spielerAmZug.getFarbe()==FarbEnum.GELB){
+			i=spielerAmZug.getKi().ermittleFigur().getId();
+		}
+		return i;
+	}
+	
+	
+	
+	@Override
 	public void nimmtTeil(Spieler pl){
 		
 		if(pl==null){
 			throw new RuntimeException("es nimmt kein Spieler teil !");
 		}
 		
-		
 		setSpielerAmZug(pl);
 		
 		spielerlist.add(pl); // add(0<--index vom spieler,spieler);
 		spielerAnzahl++;
-		System.out.println("Teilnehmer: --> "+pl.getName());
-		
-		
+		System.out.println("Spieler: " +pl.getName());
 		
 	}
 	
-	public void testen(){
+	@Override
+	public void newSpieler(String name,String Farbe,String KI){
+		Spieler x =new Spieler(name,this.bestimmeFarbe(Farbe),this.bestimmeKI(KI)) ;
+		setSpielerAmZug(x);
+		spielerlist.add(x); // add(0<--index vom spieler,spieler);
+		spielerAnzahl++;
+		System.out.println("Spieler " +  x.getName() +  " nimmt teil ");
+
+	}
+	
+	@Override
+	public String updatePos(int figurID){
+		return spielerAmZug.getFigurlist().get(figurID).getFeld().getId(); 
+	}
+	
+	@Override
+	public String  giveList(int figurID){
+		String  liste =null;
 		
-		System.out.println(spielerAmZug.getName());
+		if(this.istFigurDrin(this.getBrett().getStartRot(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+			(spielerAmZug.getFarbe()==FarbEnum.ROT)){
+			
+			liste ="StartRot";
+		}
 		
+		else if(this.istFigurDrin(this.getBrett().getStartBlau(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+			(spielerAmZug.getFarbe()==FarbEnum.BLAU)){
+			
+			liste ="StartBlau";
+		}
+		
+		else if(this.istFigurDrin(this.getBrett().getStartGruen(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+			(spielerAmZug.getFarbe()==FarbEnum.GRUEN)){
+			
+			liste ="StartGruen";
+		}
+		
+		else if(this.istFigurDrin(this.getBrett().getStartGelb(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+    		(spielerAmZug.getFarbe()==FarbEnum.GELB)){
+			
+			liste ="StartGelb";
+		}
+		
+		else if(this.istFigurDrin(this.getBrett().getEndRot(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+    		(spielerAmZug.getFarbe()==FarbEnum.ROT)){
+			
+			liste ="EndRot";
+		}
+		
+		else if(this.istFigurDrin(this.getBrett().getEndBlau(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+    		(spielerAmZug.getFarbe()==FarbEnum.BLAU)){
+			
+			liste ="EndBlau";
+		}
+		
+		else if(this.istFigurDrin(this.getBrett().getEndGelb(), spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+    		(spielerAmZug.getFarbe()==FarbEnum.GELB)){
+			
+			liste ="EndGelb";		
+		}
+		
+		else if(this.istFigurDrin(this.getBrett().getEndGruen(),spielerAmZug.getFigurlist().get(figurID).getId())==true&&
+    		(spielerAmZug.getFarbe()==FarbEnum.GRUEN)){
+			
+			liste ="EndGruen";
+		}
+		
+		else {
+			liste ="Weg";	
+		}
+		
+		return liste;
+	}
+	
+	@Override
+	public String farbePlayer(){
+		
+		FarbEnum player=spielerAmZug.getFarbe();
+		String pl=null;
+		switch(player){
+		case ROT:
+			pl="Rot";
+			return pl;
+		case BLAU:
+			pl="Blau";
+			return pl;
+		case GRUEN:
+			pl="Gruen";
+			return pl;
+		case GELB:
+			pl="Gelb";
+			return pl;
+		}
+		
+		return pl;
 		
 	}
 	
+	public FarbEnum bestimmeFarbe(String farbe) {
+		FarbEnum wert = null;
+		switch(farbe){
+			case "Rot" : 
+				wert=FarbEnum.ROT;
+				return wert;
+			case "Blau" : 
+				wert=FarbEnum.BLAU;
+				return wert;
+			case "Gruen" : 
+				wert=FarbEnum.GRUEN;
+				return wert;
+			case "Gelb" : 
+				wert=FarbEnum.GELB;
+				return wert;
+		}
+		return wert;
+	}
 	
-
-
-
-//	@Override
-//	public void spielerwaehltfarbe(FarbEnum farbe) {
-//		for (Spieler i: spielerlist) {
-//			
-//			spielerlist.farbeWaehlen(farbe);
-//			spielerlist.
-//		}
-//	}
-
- 
-
- 
+	public KI bestimmeKI(String eingabe	){
+		KI wert2= null;
+		switch(eingabe){
+			case "Mensch":
+				wert2= null;
+				return wert2;
+			case "KI Aggressiv":
+				wert2=new KI_Aggressiv(this);
+				return wert2;
+			case "KI Defensiv":
+				wert2=new KI_Defensiv(this);
+				return wert2;
+		}
+		return wert2;
+	}
+	
 	@Override
 	public void spielStart(){
 		if ((spielerlist.size()==0)){
@@ -80,46 +222,46 @@ public class Spiel implements iBediener , Serializable {
 		
 		int k=0;
 		do{
-			if (spielerlist.get(k).getFarbe()==eFarben.ROT){
+			if (spielerlist.get(k).getFarbe()==FarbEnum.ROT){
 				int i=0;
 				for(Spielfigur b:spielerlist.get(k).getFigurlist()){
 					b=spielerlist.get(k).getFigurlist().get(i);
 					brett.getStartRot().get(i).setFigur(b);
 					i++;
 				}
-				System.out.println("StartBox Bereit ROT ");
+				System.out.println("Start ROT ");
 			}
-			else if (spielerlist.get(k).getFarbe()==eFarben.BLAU){
+			else if (spielerlist.get(k).getFarbe()==FarbEnum.BLAU){
 				int i=0;
 				for(Spielfigur b:spielerlist.get(k).getFigurlist()){
 					b=spielerlist.get(k).getFigurlist().get(i);
 					brett.getStartBlau().get(i).setFigur(b);
 					i++;
 				}
-				System.out.println("StartBox Bereit BLAU ");
+				System.out.println("Start BLAU ");
 			}
-			else if (spielerlist.get(k).getFarbe()==eFarben.GRUEN){
+			else if (spielerlist.get(k).getFarbe()==FarbEnum.GRUEN){
 				int i=0;
 				for(Spielfigur b:spielerlist.get(k).getFigurlist()){
 					b=spielerlist.get(k).getFigurlist().get(i);
 					brett.getStartGruen().get(i).setFigur(b);
 					i++;
 				}
-				System.out.println("StartBox Bereit GRUEN ");
+				System.out.println("Start GRUEN");
 			}
-			else if (spielerlist.get(k).getFarbe()==eFarben.GELB){
+			else if (spielerlist.get(k).getFarbe()==FarbEnum.GELB){
 				int i=0;
 				for(Spielfigur b:spielerlist.get(k).getFigurlist()){
 					b=spielerlist.get(k).getFigurlist().get(i);
 					brett.getStartGelb().get(i).setFigur(b);
 					i++;
 				}
-				System.out.println("StartBox Bereit GELB ");
+				System.out.println("Start GELB ");
 			}
 			k++;
 		}while(k<spielerAnzahl);
 		
-		System.out.println("!!! START !!!");
+		System.out.println("Das Spiel beginnt");
 		
 		setSpielerAmZug(spielerlist.iterator().next());
 		
@@ -141,49 +283,85 @@ public class Spiel implements iBediener , Serializable {
 		
 		
 		
-			if (spieler.getFarbe() == eFarben.ROT){
-				Spielfigur farbeFigur=this.brett.getStartRot().get(figur-1).getFigur();
-				int figurBox=this.brett.getStartRot().indexOf(farbeFigur.getFeld());
-				Spielfeld rausFeld=this.brett.getWeg().get(0);
-				
-				if(rausFeld.istFeldBelegt()==false){
-					rausFeld.setFigur(farbeFigur);
-					this.brett.getStartRot().get(figurBox).setFigur(null);
-					System.out.println(spieler.getName()+" deine Figur: "+farbeFigur.getFigurId()+" startet bei Feld: "+rausFeld.getId());
-				}//spieler nicht spielerAmZug
-				else if(rausFeld.istFeldBelegt()==true){
-					if(rausFeld.getFigur().getFarbe()!=farbeFigur.getFarbe()){
-						this.schlagen(0);
-//						rausFeld.setFigur(farbeFigur);
-//						this.brett.getStartRot().get(figurBox).setFigur(null);
-					}else{
-						System.out.println("nicht gleichzeitig rausgehen bitte !");
-					}
-					
-				}
-			}
+		if (spieler.getFarbe() == FarbEnum.ROT){
+			Spielfigur farbeFigur=this.brett.getStartRot().get(figur).getFigur();
+			int figurBox=this.brett.getStartRot().indexOf(farbeFigur.getFeld());
+			Spielfeld rausFeld=this.brett.getWeg().get(0);
 			
-			else if (spieler.getFarbe() == eFarben.BLAU){
-				Spielfigur farbeFigur=this.brett.getStartBlau().get(figur-1).getFigur();
-				int figurBox=this.brett.getStartBlau().indexOf(farbeFigur.getFeld());
-				Spielfeld rausFeld=this.brett.getWeg().get(10);
-				
-				if(rausFeld.istFeldBelegt()==false){
-					rausFeld.setFigur(farbeFigur);
-					this.brett.getStartBlau().get(figurBox).setFigur(null);
-					System.out.println(spieler.getName()+" deine Figur: "+farbeFigur.getFigurId()+" startet bei Feld: "+rausFeld.getId());
-				}
-				else if(rausFeld.istFeldBelegt()==true){
-					if(rausFeld.getFigur().getFarbe()!=farbeFigur.getFarbe()){
-						this.schlagen(10);
-					}else{
-						System.out.println("nicht gleichzeitig rausgehen bitte !");
-					}
-					
-				}
+			if(rausFeld.istFeldBelegt()==false){
+				rausFeld.setFigur(farbeFigur);
+				this.brett.getStartRot().get(figurBox).setFigur(null);
+				System.out.println(spieler.getName()+" deine Figur: "+farbeFigur.getId()+" startet bei Feld: "+rausFeld.getId());
 			}
-			
+			else if(rausFeld.istFeldBelegt()==true){
+				if(rausFeld.getFigur().getFarbe()!=farbeFigur.getFarbe()){
+					this.schlagen(0);
+				}else{
+					System.out.println("nicht gleichzeitig rausgehen bitte !");
+				}
+				
+			}
+		}
 		
+		else if (spieler.getFarbe() == FarbEnum.BLAU){
+			Spielfigur farbeFigur=this.brett.getStartBlau().get(figur).getFigur();
+			int figurBox=this.brett.getStartBlau().indexOf(farbeFigur.getFeld());
+			Spielfeld rausFeld=this.brett.getWeg().get(10);
+			
+			if(rausFeld.istFeldBelegt()==false){
+				rausFeld.setFigur(farbeFigur);
+				this.brett.getStartBlau().get(figurBox).setFigur(null);
+				System.out.println(spieler.getName()+" deine Figur: "+farbeFigur.getId()+" startet bei Feld: "+rausFeld.getId());
+			}
+			else if(rausFeld.istFeldBelegt()==true){
+				if(rausFeld.getFigur().getFarbe()!=farbeFigur.getFarbe()){
+					this.schlagen(10);
+				}else{
+					System.out.println("nicht gleichzeitig rausgehen bitte !");
+				}
+				
+			}
+		}	
+		
+		else if (spieler.getFarbe() == FarbEnum.GRUEN){
+			Spielfigur farbeFigur=this.brett.getStartGruen().get(figur).getFigur();
+			int figurBox=this.brett.getStartGruen().indexOf(farbeFigur.getFeld());
+			Spielfeld rausFeld=this.brett.getWeg().get(20);
+			
+			if(rausFeld.istFeldBelegt()==false){
+				rausFeld.setFigur(farbeFigur);
+				this.brett.getStartGruen().get(figurBox).setFigur(null);
+				System.out.println(spieler.getName()+" deine Figur: "+farbeFigur.getId()+" startet bei Feld: "+rausFeld.getId());
+			}
+			else if(rausFeld.istFeldBelegt()==true){
+				if(rausFeld.getFigur().getFarbe()!=farbeFigur.getFarbe()){
+					this.schlagen(10);
+				}else{
+					System.out.println("nicht gleichzeitig rausgehen bitte !");
+				}
+				
+			}
+		}
+		
+		else if (spieler.getFarbe() == FarbEnum.GELB){
+			Spielfigur farbeFigur=this.brett.getStartGelb().get(figur).getFigur();
+			int figurBox=this.brett.getStartGelb().indexOf(farbeFigur.getFeld());
+			Spielfeld rausFeld=this.brett.getWeg().get(30);
+			
+			if(rausFeld.istFeldBelegt()==false){
+				rausFeld.setFigur(farbeFigur);
+				this.brett.getStartGelb().get(figurBox).setFigur(null);
+				System.out.println(spieler.getName()+" deine Figur: "+farbeFigur.getId()+" startet bei Feld: "+rausFeld.getId());
+			}
+			else if(rausFeld.istFeldBelegt()==true){
+				if(rausFeld.getFigur().getFarbe()!=farbeFigur.getFarbe()){
+					this.schlagen(10);
+				}else{
+					System.out.println("nicht gleichzeitig rausgehen bitte !");
+				}
+				
+			}
+		}
 		
 	}
 	
@@ -199,62 +377,51 @@ public class Spiel implements iBediener , Serializable {
 			throw new RuntimeException("es gibt keine figur zu schlagen");
 		}
 		
-		if (schlageFigur.getFarbe() == eFarben.ROT) {
-			int i = 0;
-			if (brett.getStartRot().get(i).getFigur() == null){
-				brett.getStartRot().get(i+1).setFigur(schlageFigur);
-				this.brett.getWeg().get(feldId-1).setFigur(null);
-				System.out.println("ROTE Figur geschlagen");
-			} else {
-				i++;				
+		if (schlageFigur.getFarbe() == FarbEnum.ROT) {
+			for(Spielfeld f:brett.getStartRot()){
+				if(f.getFigur()==null){
+					f.setFigur(schlageFigur);
+					brett.getWeg().get(feldId-1).setFigur(null);
+					System.out.println("ROTE Figur geschlagen");
+				}
 			}
 		}
 		
-		else if (schlageFigur.getFarbe() == eFarben.BLAU) {
-			int i = 0;
-			if (brett.getStartBlau().get(i).getFigur() == null){
-				brett.getStartBlau().get(i+1).setFigur(schlageFigur);
-				this.brett.getWeg().get(feldId-1).setFigur(null);
-				System.out.println("BLAUE Figur geschlagen");
-			} else {
-				i++;				
+		else if (schlageFigur.getFarbe() == FarbEnum.BLAU) {
+			for(Spielfeld f:brett.getStartBlau()){
+				if(f.getFigur()==null){
+					f.setFigur(schlageFigur);
+					brett.getWeg().get(feldId-1).setFigur(null);
+					System.out.println("BLAUE Figur geschlagen");
+				}
 			}
 		}
 		
-		else if (schlageFigur.getFarbe() == eFarben.GRUEN) {
-			int i = 0;
-			if (brett.getStartGruen().get(i).getFigur() == null){
-				brett.getStartGruen().get(i+1).setFigur(schlageFigur);
-				this.brett.getWeg().get(feldId-1).setFigur(null);
-				System.out.println("GRUENE Figur geschlagen");
-			} else {
-				i++;				
+		else if (schlageFigur.getFarbe() == FarbEnum.GRUEN) {
+			for(Spielfeld f:brett.getStartGruen()){
+				if(f.getFigur()==null){
+					f.setFigur(schlageFigur);
+					brett.getWeg().get(feldId-1).setFigur(null);
+					System.out.println("GRUENE Figur geschlagen");
+				}
 			}
 		}
 		
-		else if (schlageFigur.getFarbe() == eFarben.GELB) {
-			int i = 0;
-			if (brett.getStartGelb().get(i).getFigur() == null){
-				brett.getStartGelb().get(i+1).setFigur(schlageFigur);
-				this.brett.getWeg().get(feldId-1).setFigur(null);
-				System.out.println("GELBE Figur geschlagen");
-			} else {
-				i++;				
+		else if (schlageFigur.getFarbe() == FarbEnum.GELB) {
+			for(Spielfeld f:brett.getStartGelb()){
+				if(f.getFigur()==null){
+					f.setFigur(schlageFigur);
+					brett.getWeg().get(feldId-1).setFigur(null);
+					System.out.println("GELBE Figur geschlagen");
+				}
 			}
 		}
 	}
 	
-//	public Spieler spielerAmZug(){
-//		for(Spieler a: spielerlist){
-//			spielerAmZug=a;
-//			
-//		}
-//		return spielerAmZug;
-//	}
-	
+	@Override
 	public void beenden(){
 		
-		eFarben e = spielerAmZug.getFarbe();
+		FarbEnum e = spielerAmZug.getFarbe();
 		
 		if(this.ermittleGewinner()==true){
 			System.out.println(spielerAmZug.getName()+ " HAT GEWONNEN !");
@@ -264,61 +431,135 @@ public class Spiel implements iBediener , Serializable {
 			
 			switch (spielerAnzahl) {
 				
+				
 				case 2:
-				if (e == eFarben.ROT) {
-					for (Spieler i : spielerlist) {
-						if (i.getFarbe() == eFarben.BLAU) {
-							setSpielerAmZug(i);
+				
+				if (e == FarbEnum.ROT) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.BLAU) {
+								setSpielerAmZug(i);
+							}
 						}
 					}
 				}
-				if (e == eFarben.BLAU) {
-					for (Spieler i : spielerlist) {
-						if (i.getFarbe() == eFarben.ROT) {
-							setSpielerAmZug(i);
+				if (e == FarbEnum.BLAU) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.ROT) {
+								setSpielerAmZug(i);
+							}
 						}
 					}
 				}
 				break;
+				
 				
 				case 3:
-				if (e == eFarben.BLAU) {
-					for (Spieler i : spielerlist) {
-						if (i.getFarbe() == eFarben.GRUEN) {
-							setSpielerAmZug(i);
+				
+				if (e == FarbEnum.ROT) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.BLAU) {
+								setSpielerAmZug(i);
+							}
+						}
+					}
+				}
+				if (e == FarbEnum.BLAU) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.GRUEN) {
+								setSpielerAmZug(i);
+							}
+						}
+					}
+				}
+				
+				if (e == FarbEnum.GRUEN) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.ROT) {
+								setSpielerAmZug(i);
+							}
 						}
 					}
 				}
 				break;
 				
+				
 				case 4:
-				if (e == eFarben.GRUEN) {
-					for (Spieler i : spielerlist) {
-						if (i.getFarbe() == eFarben.GELB) {
-							setSpielerAmZug(i);
+				
+				if (e == FarbEnum.ROT) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+						if (i.getFarbe() == FarbEnum.BLAU) {
+								setSpielerAmZug(i);
+							}
 						}
 					}
 				}
+				
+				if (e == FarbEnum.BLAU) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.GRUEN) {
+								setSpielerAmZug(i);
+							}
+						}
+					}
+				}
+				
+				if (e == FarbEnum.GRUEN) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.GELB) {
+								setSpielerAmZug(i);
+							}
+						}
+					}
+				}
+				
+				if (e == FarbEnum.GELB) {
+					if(this.getWuerfelZahl()==6){
+						break;
+					}
+					else{
+						for (Spieler i : spielerlist) {
+							if (i.getFarbe() == FarbEnum.ROT) {
+								setSpielerAmZug(i);
+							}
+						}
+					}
+				}			
 				break;
 			}	
 		}
 	}
-	
-
-	
-	
-	public boolean moechteLaufen() {
-		
-		boolean x = false;
-		
-		if(getWuerfelZahl()<6){
-			return true;
-		}
-		return x;
-		
-	}
-	
-
 	
 	public int bestand(ArrayList<Spielfeld> liste){
 		
@@ -340,6 +581,7 @@ public class Spiel implements iBediener , Serializable {
 		
 	}
 	
+	@Override
 	public boolean ermittleGewinner(){
 		if(	istEndfeldVoll(brett.getEndRot())==true||
 			istEndfeldVoll(brett.getEndBlau())==true||
@@ -350,12 +592,11 @@ public class Spiel implements iBediener , Serializable {
 		return false;
 	}
 	
-	
 	public boolean istFigurDrin(ArrayList<Spielfeld> liste,int figurId){
 		
 		for(Spielfeld b:liste){
 			if(b.getFigur()!=null){
-				if(b.getFigur().getFigurId()==figurId){
+				if(b.getFigur().getId()==figurId){
 					return true;
 				}
 			}
@@ -387,18 +628,23 @@ public class Spiel implements iBediener , Serializable {
 	 * die Spielfigur eines Spielers laeuft
 	 * @param figurId ist, welche figur laufen moechte
 	 */
+	@Override
 	public void laufen(int figurId){
 		
-		Spielfigur nowFigur=spielerAmZug.getFigurlist().get(figurId-1);
+		Spielfigur nowFigur=spielerAmZug.getFigurlist().get(figurId);
 		int letztePos=getBrett().getWeg().indexOf(nowFigur.getFeld());
 		int letzterWurf= getWuerfelZahl();//spielerAmZug.getLetzterWurf();
 		int neuePos=letztePos + letzterWurf;
 		int indexMax=39;
 		Spielfeld startRot=this.brett.getWeg().get(0);
 		Spielfeld startBlau=this.brett.getWeg().get(10);
+		Spielfeld startGruen=this.brett.getWeg().get(20);
+		Spielfeld startGelb=this.brett.getWeg().get(30);
 		
-		// die if abfrage schaut welche farbe die figur hat
-		if (nowFigur.getFarbe()==eFarben.ROT){
+		
+		
+		// ------------------------ROT---------------------------
+		if (nowFigur.getFarbe()==FarbEnum.ROT){
 			
 			//zum ersten mal raus kommen 
 			if (letzterWurf==6&&this.bestand(this.getBrett().getStartRot())==4){
@@ -423,7 +669,7 @@ public class Spiel implements iBediener , Serializable {
 					System.out.println("Du musst dich erst weg bewegen");		
 				}
 				else if(startRot.getFigur().getFarbe()!=nowFigur.getFarbe()){
-					System.out.println("Figur auf startfeld von rot geschlagen");
+					System.out.println("Figur auf Startfeld von Rot geschlagen");
 					this.schlagen(1);
 				}
 			}
@@ -446,16 +692,16 @@ public class Spiel implements iBediener , Serializable {
 					if(neuesFeld.istFeldBelegt()==false){
 						neuesFeld.setFigur(nowFigur);
 						getBrett().getWeg().get(letztePos).setFigur(null);
-						System.out.println("Deine Figur: "+nowFigur.getFigurId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+						System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
 					}		
 					else if(neuesFeld.istFeldBelegt()==true){	
 						if(neuesFeld.getFigur().getFarbe()!=nowFigur.getFarbe()){
 							this.schlagen(neuePos+1);
 							neuesFeld.setFigur(nowFigur);
 							getBrett().getWeg().get(letztePos).setFigur(null);
-							System.out.println("Deine Figur: "+nowFigur.getFigurId()+" sitzt auf dem Feld: "+neuesFeld.getId());	
+							System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());	
 						}else{
-							System.out.println("du kannst nicht deine figur schlagen !");
+							System.out.println("Du kannst deine Figur nicht schlagen !");
 						}	
 					}
 				}
@@ -474,7 +720,7 @@ public class Spiel implements iBediener , Serializable {
 							if(this.kannUeberhoeln(this.brett.getEndRot(),endPos+1, neuePos)==true){
 								endFeld.setFigur(nowFigur);
 								brett.getEndRot().get(endPos).setFigur(null);
-								System.out.println("Deine Figur: "+nowFigur.getFigurId()+ " sitzt auf dem Feld: "+getBrett().getEndRot().get(neuePos).getId());
+								System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndRot().get(neuePos).getId());
 							}else{
 								System.out.println("Du kannst nicht ueberholen !");
 							}
@@ -490,7 +736,7 @@ public class Spiel implements iBediener , Serializable {
 							if(this.kannUeberhoeln(this.brett.getEndRot(),0, differenz-1)==true){
 								endFeld.setFigur(nowFigur);
 								brett.getWeg().get(letztePos).setFigur(null);
-								System.out.println("Deine Figur: "+nowFigur.getFigurId()+ " sitzt auf dem Feld: "+getBrett().getEndRot().get(differenz-1).getId());
+								System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndRot().get(differenz-1).getId());
 							}else{
 								System.out.println("Du kannst nicht ueberholen !");
 							}
@@ -509,7 +755,7 @@ public class Spiel implements iBediener , Serializable {
 		
 		
 		// ------------------------BLAU---------------------------
-		else if (nowFigur.getFarbe()==eFarben.BLAU){
+		else if (nowFigur.getFarbe()==FarbEnum.BLAU){
 			
 			//zum ersten mal raus kommen 
 			if (letzterWurf==6&&this.bestand(this.getBrett().getStartBlau())==4){
@@ -528,13 +774,13 @@ public class Spiel implements iBediener , Serializable {
 			}
 			
 			//der spieler wuerfelt 6 und das startfeld von rot ist besetzt 
-			else if(letzterWurf==6&&this.bestand(this.getBrett().getStartBlau())<4&&startBlau.istFeldBelegt()==true){
+			else if(letzterWurf==6&&this.bestand(this.getBrett().getStartBlau())<4&&startBlau.istFeldBelegt()==true&&this.istFigurDrin(this.brett.getStartBlau(), figurId)==true){
 				//die if abfrage schaut ob die figur die gleiche farbe hat wie deine figur
 				if(startBlau.getFigur().getFarbe()==nowFigur.getFarbe()){
 					System.out.println("Du musst dich erst weg bewegen");
 				}
 				else if(startBlau.getFigur().getFarbe()!=nowFigur.getFarbe()){
-					System.out.println("Figur auf startfeld von rot geschlagen");
+					System.out.println("Figur auf Startfeld von Blau geschlagen");
 					this.schlagen(11);
 				}
 			}
@@ -549,23 +795,23 @@ public class Spiel implements iBediener , Serializable {
 			}
 			
 			//-----------LAUFEN-----------
-			else if(this.bestand(this.getBrett().getStartRot())<4&&this.istFigurDrin(this.brett.getStartBlau(), figurId)!=true){
+			else if(this.bestand(this.getBrett().getStartBlau())<4&&this.istFigurDrin(this.brett.getStartBlau(), figurId)!=true){
 				if(neuePos>=11&&neuePos<=39&&letztePos>=10){
 					Spielfeld neuesFeld=getBrett().getWeg().get(neuePos);
 					if(neuesFeld.istFeldBelegt()==false){
 						neuesFeld.setFigur(nowFigur);
 						getBrett().getWeg().get(letztePos).setFigur(null);
-						System.out.println("Deine Figur: "+nowFigur.getFigurId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+						System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
 					}		
 					else if(neuesFeld.istFeldBelegt()==true){	
 						if(neuesFeld.getFigur().getFarbe()!=nowFigur.getFarbe()){
 							this.schlagen(neuePos+1);
 							neuesFeld.setFigur(nowFigur);
 							getBrett().getWeg().get(letztePos).setFigur(null);
-							System.out.println("Deine Figur: "+nowFigur.getFigurId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+							System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
 						}
 						else{
-							System.out.println("du kannst nicht deine figur schlagen !");
+							System.out.println("Du kannst deine Figur nicht schlagen !");
 						}	
 					}
 				}
@@ -581,11 +827,11 @@ public class Spiel implements iBediener , Serializable {
 						
 						//von feld 1 bis zum feld 10 laufen
 						if(newIndex>=0&&newIndex<=9&&this.istFigurDrin(this.brett.getEndBlau(), figurId)==false){
-						
+							
 							if(neuesFeld2.istFeldBelegt()==false){
 								neuesFeld2.setFigur(nowFigur);
 								brett.getWeg().get(letztePos).setFigur(null);
-								System.out.println("Deine Figur: "+nowFigur.getFigurId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
+								System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
 							}
 							
 							else if(neuesFeld2.istFeldBelegt()==true){
@@ -593,16 +839,16 @@ public class Spiel implements iBediener , Serializable {
 									this.schlagen(neuePos+1);
 									neuesFeld2.setFigur(nowFigur);
 									brett.getWeg().get(letztePos).setFigur(null);
-									System.out.println("Deine Figur: "+nowFigur.getFigurId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
+									System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
 								}
 								else{
-									System.out.println("du kannst deine figur nicht schlagen !");
+									System.out.println("Du kannst deine Figur nicht schlagen !");
 								}	
 							}
 						}
 						//ins ENDFELD reingehen
 						else {
-						
+							
 							int differenz = neuePos-wegMaxBlau;
 							int endPos=getBrett().getEndBlau().indexOf(nowFigur.getFeld());
 							neuePos=endPos+letzterWurf;
@@ -615,7 +861,7 @@ public class Spiel implements iBediener , Serializable {
 									if(this.kannUeberhoeln(this.brett.getEndBlau(),endPos+1, neuePos)==true){
 										endFeld.setFigur(nowFigur);
 										brett.getEndBlau().get(endPos).setFigur(null);
-										System.out.println("Deine Figur: "+nowFigur.getFigurId()+ " sitzt auf dem Feld: "+getBrett().getEndBlau().get(neuePos).getId());
+										System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndBlau().get(neuePos).getId());
 									}else{
 										System.out.println("Du kannst nicht ueberholen !");
 									}
@@ -631,7 +877,7 @@ public class Spiel implements iBediener , Serializable {
 									if(this.kannUeberhoeln(this.brett.getEndBlau(),0, differenz-1)==true){
 										endFeld.setFigur(nowFigur);
 										brett.getWeg().get(letztePos).setFigur(null);
-										System.out.println("Deine Figur: "+nowFigur.getFigurId()+ " sitzt auf dem Feld: "+getBrett().getEndBlau().get(differenz-1).getId());
+										System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndBlau().get(differenz-1).getId());
 									}else{
 										System.out.println("Du kannst nicht ueberholen !");
 									}
@@ -643,18 +889,293 @@ public class Spiel implements iBediener , Serializable {
 							else{
 								System.out.println("Du kannst mit der Figur nicht weitergehen !");
 							}
-					}
+						}
 				}
 			}
 		}
+		
+		
+		// ------------------------GRUEN---------------------------
+		else if (nowFigur.getFarbe()==FarbEnum.GRUEN){
+			
+			//zum ersten mal raus kommen 
+			if (letzterWurf==6&&this.bestand(this.getBrett().getStartGruen())==4){
+				this.startPosZuweisen(spielerAmZug, figurId);
+				System.out.println("Du darfst nochmal wuerfeln");
+			}
+			
+			//der spieler moechte raus gehen aber er hat keine 6 gewuerfelt 
+			else if (letzterWurf!=6&&this.bestand(this.getBrett().getStartGruen())==4){
+				System.out.println("Du musst erst 6 wuerfeln um zu starten");
+			}				
+			
+			//verucht eine andere figur rauszugehen wen er keine 6 gewuerfelt hat == false
+			else if (letzterWurf!=6&&this.bestand(this.getBrett().getStartGruen())<=4&&this.istFigurDrin(this.getBrett().getStartGruen(), figurId)==true){
+				System.out.println("Du musst erst 6 wuerfeln um raus zugehen");
+			}
+			
+			//der spieler wuerfelt 6 und das startfeld von rot ist besetzt 
+			else if(letzterWurf==6&&this.bestand(this.getBrett().getStartGruen())<4&&startGruen.istFeldBelegt()==true&&this.istFigurDrin(this.brett.getStartGruen(), figurId)==true){
+				//die if abfrage schaut ob die figur die gleiche farbe hat wie deine figur
+				if(startGruen.getFigur().getFarbe()==nowFigur.getFarbe()){
+					System.out.println("Du musst dich erst weg bewegen");
+				}
+				else if(startGruen.getFigur().getFarbe()!=nowFigur.getFarbe()){
+					System.out.println("Figur auf Startfeld von Gruen geschlagen");
+					this.schlagen(21);
+				}
+			}
+			
+			//Bringt eine neue figur raus 
+			else if(letzterWurf==6&&this.bestand(this.getBrett().getStartGruen())<4&&startGruen.istFeldBelegt()==false&&this.istFigurDrin(this.brett.getStartGruen(), figurId)==true){
+//				System.out.println("Wahele eine figur um raus zu gehen oder\nmit einer anderen weiter zu laufen !!");
+				if (this.istFigurDrin(this.getBrett().getStartGruen(), figurId)==true){
+					this.startPosZuweisen(spielerAmZug, figurId);
+					System.out.println("Du darfst nochmal wuerfeln");
+				}
+			}
+			
+			//-----------LAUFEN-----------
+			else if(this.bestand(this.getBrett().getStartGruen())<4&&this.istFigurDrin(this.brett.getStartGruen(), figurId)!=true){
+				if(neuePos>=21&&neuePos<=39&&letztePos>=20){
+					Spielfeld neuesFeld=getBrett().getWeg().get(neuePos);
+					if(neuesFeld.istFeldBelegt()==false){
+						neuesFeld.setFigur(nowFigur);
+						getBrett().getWeg().get(letztePos).setFigur(null);
+						System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+					}		
+					else if(neuesFeld.istFeldBelegt()==true){	
+						if(neuesFeld.getFigur().getFarbe()!=nowFigur.getFarbe()){
+							this.schlagen(neuePos+1);
+							neuesFeld.setFigur(nowFigur);
+							getBrett().getWeg().get(letztePos).setFigur(null);
+							System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+						}
+						else{
+							System.out.println("Du kannst deine Figur nicht schlagen !");
+						}	
+					}
+				}
+				//hier kommst du rein wen du ueber das maximum gehst (ueberschreitest feld 40)
+				else{	
+					int newIndex=((neuePos-indexMax)-1);
+					int wegMaxGruen = 19;
+					
+					if(newIndex<0)
+						newIndex=neuePos;
+						
+						Spielfeld neuesFeld2=this.brett.getWeg().get(newIndex);
+						
+						//von feld 1 bis zum feld 20 laufen
+						if(newIndex>=0&&newIndex<=19&&this.istFigurDrin(this.brett.getEndGruen(), figurId)==false){
+							
+							if(neuesFeld2.istFeldBelegt()==false){
+								neuesFeld2.setFigur(nowFigur);
+								brett.getWeg().get(letztePos).setFigur(null);
+								System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
+							}
+							
+							else if(neuesFeld2.istFeldBelegt()==true){
+								if(neuesFeld2.getFigur().getFarbe()!=nowFigur.getFarbe()){
+									this.schlagen(neuePos+1);
+									neuesFeld2.setFigur(nowFigur);
+									brett.getWeg().get(letztePos).setFigur(null);
+									System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
+								}
+								else{
+									System.out.println("Du kannst deine Figur nicht schlagen !");
+								}	
+							}
+						}
+						//ins ENDFELD reingehen
+						else {
+							
+							int differenz = neuePos-wegMaxGruen;
+							int endPos=getBrett().getEndGruen().indexOf(nowFigur.getFeld());
+							neuePos=endPos+letzterWurf;
+							
+							//diese if abfrage ist wen figur im endfeld drin ist und weiter laeuft
+							if(differenz<=4&&neuePos<brett.getEndGruen().size()&&this.istFigurDrin(brett.getEndGruen(), figurId)==true){
+								Spielfeld endFeld=getBrett().getEndGruen().get(neuePos);
+								
+								if(endFeld.getFigur()==null){
+									if(this.kannUeberhoeln(this.brett.getEndGruen(),endPos+1, neuePos)==true){
+										endFeld.setFigur(nowFigur);
+										brett.getEndGruen().get(endPos).setFigur(null);
+										System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndGruen().get(neuePos).getId());
+									}else{
+										System.out.println("Du kannst nicht ueberholen !");
+									}
+								}else{
+									System.out.println("Feld ist besetzt !");
+								}
+							}
+							//diese if abfrage ist wen figur von weg ins endfeld drin rein will
+							else if(differenz<=4&&differenz>0){
+								Spielfeld endFeld=getBrett().getEndGruen().get(differenz-1);
+								
+								if(endFeld.getFigur()==null){
+									if(this.kannUeberhoeln(this.brett.getEndGruen(),0, differenz-1)==true){
+										endFeld.setFigur(nowFigur);
+										brett.getWeg().get(letztePos).setFigur(null);
+										System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndGruen().get(differenz-1).getId());
+									}else{
+										System.out.println("Du kannst nicht ueberholen !");
+									}
+								}else{
+									System.out.println("Feld ist besetzt !");
+								}
+							}
+							
+							else{
+								System.out.println("Du kannst mit der Figur nicht weitergehen !");
+							}
+						}
+				}
+			}
+		}
+		
+		// ------------------------GELB---------------------------
+		else if (nowFigur.getFarbe()==FarbEnum.GELB){
+			
+			//zum ersten mal raus kommen 
+			if (letzterWurf==6&&this.bestand(this.getBrett().getStartGelb())==4){
+				this.startPosZuweisen(spielerAmZug, figurId);
+				System.out.println("Du darfst nochmal wuerfeln");
+			}
+			
+			//der spieler moechte raus gehen aber er hat keine 6 gewuerfelt 
+			else if (letzterWurf!=6&&this.bestand(this.getBrett().getStartGelb())==4){
+				System.out.println("Du musst erst 6 wuerfeln um zu starten");
+			}				
+			
+			//verucht eine andere figur rauszugehen wen er keine 6 gewuerfelt hat == false
+			else if (letzterWurf!=6&&this.bestand(this.getBrett().getStartGelb())<=4&&this.istFigurDrin(this.getBrett().getStartGelb(), figurId)==true){
+				System.out.println("Du musst erst 6 wuerfeln um raus zugehen");
+			}
+			
+			//der spieler wuerfelt 6 und das startfeld von rot ist besetzt 
+			else if(letzterWurf==6&&this.bestand(this.getBrett().getStartGelb())<4&&startGelb.istFeldBelegt()==true&&this.istFigurDrin(this.brett.getStartGelb(), figurId)==true){
+				//die if abfrage schaut ob die figur die gleiche farbe hat wie deine figur
+				if(startGelb.getFigur().getFarbe()==nowFigur.getFarbe()){
+					System.out.println("Du musst dich erst weg bewegen");
+				}
+				else if(startGelb.getFigur().getFarbe()!=nowFigur.getFarbe()){
+					System.out.println("Figur auf Startfeld von Gelb geschlagen");
+					this.schlagen(31);
+				}
+			}
+			
+			//Bringt eine neue figur raus 
+			else if(letzterWurf==6&&this.bestand(this.getBrett().getStartGelb())<4&&startGelb.istFeldBelegt()==false&&this.istFigurDrin(this.brett.getStartGelb(), figurId)==true){
+//				System.out.println("Wahele eine figur um raus zu gehen oder\nmit einer anderen weiter zu laufen !!");
+				if (this.istFigurDrin(this.getBrett().getStartGelb(), figurId)==true){
+					this.startPosZuweisen(spielerAmZug, figurId);
+					System.out.println("Du darfst nochmal wuerfeln");
+				}
+			}
+			
+			//-----------LAUFEN-----------
+			else if(this.bestand(this.getBrett().getStartGelb())<4&&this.istFigurDrin(this.brett.getStartGelb(), figurId)!=true){
+				if(neuePos>=31&&neuePos<=39&&letztePos>=30){
+					Spielfeld neuesFeld=getBrett().getWeg().get(neuePos);
+					if(neuesFeld.istFeldBelegt()==false){
+						neuesFeld.setFigur(nowFigur);
+						getBrett().getWeg().get(letztePos).setFigur(null);
+						System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+					}		
+					else if(neuesFeld.istFeldBelegt()==true){	
+						if(neuesFeld.getFigur().getFarbe()!=nowFigur.getFarbe()){
+							this.schlagen(neuePos+1);
+							neuesFeld.setFigur(nowFigur);
+							getBrett().getWeg().get(letztePos).setFigur(null);
+							System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld.getId());
+						}
+						else{
+							System.out.println("Du kannst deine Figur nicht schlagen !");
+						}	
+					}
+				}
+				//hier kommst du rein wen du ueber das maximum gehst (ueberschreitest feld 40)
+				else{	
+					int newIndex=((neuePos-indexMax)-1);
+					int wegMaxGelb = 29;
+					
+					if(newIndex<0)
+						newIndex=neuePos;
+						
+						Spielfeld neuesFeld2=this.brett.getWeg().get(newIndex);
+						
+						//von feld 1 bis zum feld 30 laufen
+						if(newIndex>=0&&newIndex<=29&&this.istFigurDrin(this.brett.getEndGelb(), figurId)==false){
+							
+							if(neuesFeld2.istFeldBelegt()==false){
+								neuesFeld2.setFigur(nowFigur);
+								brett.getWeg().get(letztePos).setFigur(null);
+								System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
+							}
+							
+							else if(neuesFeld2.istFeldBelegt()==true){
+								if(neuesFeld2.getFigur().getFarbe()!=nowFigur.getFarbe()){
+									this.schlagen(neuePos+1);
+									neuesFeld2.setFigur(nowFigur);
+									brett.getWeg().get(letztePos).setFigur(null);
+									System.out.println("Deine Figur: "+nowFigur.getId()+" sitzt auf dem Feld: "+neuesFeld2.getId());
+								}
+								else{
+									System.out.println("Du kannst deine Figur nicht schlagen !");
+								}	
+							}
+						}
+						//ins ENDFELD reingehen
+						else {
+							
+							int differenz = neuePos-wegMaxGelb;
+							int endPos=getBrett().getEndGelb().indexOf(nowFigur.getFeld());
+							neuePos=endPos+letzterWurf;
+							
+							//diese if abfrage ist wen figur im endfeld drin ist und weiter laeuft
+							if(differenz<=4&&neuePos<brett.getEndGelb().size()&&this.istFigurDrin(brett.getEndGelb(), figurId)==true){
+								Spielfeld endFeld=getBrett().getEndGelb().get(neuePos);
+								
+								if(endFeld.getFigur()==null){
+									if(this.kannUeberhoeln(this.brett.getEndGelb(),endPos+1, neuePos)==true){
+										endFeld.setFigur(nowFigur);
+										brett.getEndGelb().get(endPos).setFigur(null);
+										System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndGelb().get(neuePos).getId());
+									}else{
+										System.out.println("Du kannst nicht ueberholen !");
+									}
+								}else{
+									System.out.println("Feld ist besetzt !");
+								}
+							}
+							//diese if abfrage ist wen figur von weg ins endfeld drin rein will
+							else if(differenz<=4&&differenz>0){
+								Spielfeld endFeld=getBrett().getEndGelb().get(differenz-1);
+								
+								if(endFeld.getFigur()==null){
+									if(this.kannUeberhoeln(this.brett.getEndGelb(),0, differenz-1)==true){
+										endFeld.setFigur(nowFigur);
+										brett.getWeg().get(letztePos).setFigur(null);
+										System.out.println("Deine Figur: "+nowFigur.getId()+ " sitzt auf dem Feld: "+getBrett().getEndGelb().get(differenz-1).getId());
+									}else{
+										System.out.println("Du kannst nicht ueberholen !");
+									}
+								}else{
+									System.out.println("Feld ist besetzt !");
+								}
+							}
+							
+							else{
+								System.out.println("Du kannst mit der Figur nicht weitergehen !");
+							}
+						}
+				}
+			}
+		}
+		
 	}	
-
-
-
-
-	
-
-
 
 	/**
 	 * das Spielbrett wird zurueckgegeben
@@ -687,7 +1208,8 @@ public class Spiel implements iBediener , Serializable {
 	 */
 	public void setSpielerAmZug(Spieler spielerAmZug) {
 		this.spielerAmZug = spielerAmZug;
-		System.out.println("-----"+spielerAmZug.getFarbe()+"----");
+		System.out.println("_____"+spielerAmZug.getFarbe()+"____");
+		
 		
 	}
  
@@ -701,29 +1223,30 @@ public class Spiel implements iBediener , Serializable {
 		this.spielerlist = spielerlist;
 	}
 
-
+	@Override
 	public Integer getWuerfelZahl() {
+		
 		return wuerfelZahl;
 	}
 
+	@Override
 	public void setWuerfelZahl(Integer wuerfelZahl) {
 		
 		
 		
 		if (wuerfelZahl!=null && wuerfelZahl >=1 ){
 			System.out.println( spielerAmZug.getName()+" hat " + wuerfelZahl + " gewuerfelt");
+//			System.out.println(wuerfelZahl);
 		}
 		this.wuerfelZahl = wuerfelZahl;
 	}
 	
 	
 	
-//	@Override
-//	public void wuerfeln() {
-//		
-//		setWuerfelZahl(spielerAmZug.getWuerfel().werfen());
-//	}
+	@Override
+	public void wuerfeln() {
+		setWuerfelZahl(spielerAmZug.wuerfeln());
+	}
 
 	
- 
 }

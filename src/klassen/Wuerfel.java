@@ -11,20 +11,21 @@ public class Wuerfel implements Serializable {
 	 */
 	public Wuerfel(){
 	}
-	/**
-	 * eine Zahl zwischen 1 und 6 wird per Zufall gewuerfelt
-	 * @return zufall eine Zufallszahl zwischen 1 und 6
-	 */
-	public static int werfen() {
+
+	public static int werfen () {
+		
+		
 		int zufall = (int) (6 * Math.random()) + 1;
-		if (zufall!=6){
-			return 6;
-		}
+//		if (zufall!=6){
+//			return 6;
+//		}
 		return zufall;
 	}
 	
+	
+	
 	@Override
 	public String toString() {
-		return ("Die Zahl "+werfen()+" wurde gewuerfelt !");
+		return (""+werfen());
 	}
 }

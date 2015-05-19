@@ -6,7 +6,8 @@ import java.io.Serializable;
  
 public class KI_Aggressiv extends KI implements Serializable {
 	private static final long serialVersionUID = 1L;
- 
+	
+	 
 //	private boolean kannSchlagen = false;
 //	private boolean kannLaufen = false;
 //	private boolean kannRaus = false;
@@ -25,12 +26,12 @@ public class KI_Aggressiv extends KI implements Serializable {
 	 */
  
 	@Override
-	public Spielfigur ErmittleZuSpielendeFigur(Spieler aktuellerSpieler, int letzterWurf ){
+	public Spielfigur ermittleFigur(){
 		
 		Spielfigur ergebnis = null;
 		
-		Spielfigur rausgeher = ErmittleKannRaus();
 		Spielfigur schlaeger = ErmittleWertVonKannSchlagen();
+		Spielfigur rausgeher = ErmittleKannRaus();
 		Spielfigur laeufer = ErmittleKannLaufenUndWer();
 		
 		
@@ -44,7 +45,8 @@ public class KI_Aggressiv extends KI implements Serializable {
 		else if (kannLaufen==true){
 			ergebnis = laeufer;
 			}
+		
 		return ergebnis;
+		
 		}
-	
 	}

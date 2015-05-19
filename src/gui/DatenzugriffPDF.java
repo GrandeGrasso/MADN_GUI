@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -11,38 +12,30 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import interfaces.iDatenzugriff;
 
-/**
- * Diese Klasse bildet die PDF ab.
 
- */
+
 public class DatenzugriffPDF implements iDatenzugriff {
 	
 	private FileOutputStream fileOut;
-	 Document document;
-
-
-	@Override
-	public Object laden(String filename)  {
-		
+	private Document document;
+	
+  @Override
+	public Object laden(String Filename)  {
 		System.err.println("Aus einer PDF datei kann das Spiel nicht geladen werden");
-		return null;									
-		//aus PDF kann nicht geladen werden
-
-
+		return null;									//aus PDF kann nicht geladen werden
 	}
 
 	@Override
-	public void speichern(Object spiel, String filename) {
-		
+	public void speichern(Object o,String Filename) {
 		try{
-			document.add((Element) spiel);
+			document.add((Element) o);
 		}
 		catch(DocumentException e){
 			System.err.println("Fehler bei Dokumenterzeugung: "+e);
 		}
 		
 	}
-	
+
 	public void oeffnen(File f) throws DocumentException, FileNotFoundException {
 		try{
 			document=new Document();
@@ -70,9 +63,4 @@ public class DatenzugriffPDF implements iDatenzugriff {
 	}
 
 
-		
-		
 	}
-
-	
-

@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 
 public class Spielfeld implements Serializable {
-	private static final long serialVersionUID = 1L; 
+private static final long serialVersionUID = 1L;
 	
 	
 	private String id;
-	private eFarben farbe;
+	private FarbEnum farbe;
 	
 	private Spielbrett brett;
 	private Spielfigur figur;
@@ -18,7 +18,7 @@ public class Spielfeld implements Serializable {
 	 * @param farbe ist die Farbe eines Spielfeldes
 	 * @param id ist die ID eines Spielfeldes
 	 */
-	public Spielfeld(eFarben farbe, String id){
+	public Spielfeld(FarbEnum farbe, String id){
 		this.setId(id);
 		this.setFarbe(farbe);
 //		this.setFigur(figur);
@@ -94,7 +94,7 @@ public class Spielfeld implements Serializable {
 	 * die Farbe eines Spielfeldes wird zurueck gegeben
 	 * @return farbe ist die Farbe eines Spielfeldes
 	 */
-	public eFarben getFarbe() {
+	public FarbEnum getFarbe() {
 		return farbe;
 	}
 	
@@ -102,7 +102,7 @@ public class Spielfeld implements Serializable {
 	 * die Farbe eines Spielfeldes wird gesetzt
 	 * @param farbe ist die Farbe eines Spielfeldes
 	 */
-	public void setFarbe(eFarben farbe) {
+	public void setFarbe(FarbEnum farbe) {
 		
 		this.farbe=farbe;
 	}

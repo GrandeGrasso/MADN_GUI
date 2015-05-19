@@ -14,6 +14,8 @@ public class DialogFenster {
         JFrame fra;
         JLabel backImgPanel = new JLabel(new ImageIcon("2wuerfel.jpg"));
     	private EventHandler event;
+    	
+    	MenuDialogLaden laden;
         
         public DialogFenster(){
         
@@ -23,9 +25,13 @@ public class DialogFenster {
              fra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              
              event = new EventHandler(this);
+             
+             this.laden = new MenuDialogLaden();
+             
              erstelle();
              hinzufuegen();
              addListener();
+            
             
              
              fra.setResizable(false);
@@ -38,16 +44,21 @@ public class DialogFenster {
        private void erstelle(){
     	   backImgPanel.setLayout(null);
            backImgPanel.setOpaque(false);
-           backImgPanel.add(button);        
-           button.setBounds(80, 220, 120, 50);
+           backImgPanel.add(button);    
+           backImgPanel.add(laden.pnlOben);
+           button.setBounds(80, 270, 120, 50);
            backImgPanel.setBounds(0,0,400,300);
-    	 
+    
+           laden.pnlOben.setBounds(1, 1, 640, 20);
     	   
+    	
        }
        
        private void hinzufuegen(){
     	   fra.getContentPane().add(backImgPanel);
+   
     	   
+    	  
        }
        
        private void addListener() {

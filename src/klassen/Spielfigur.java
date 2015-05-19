@@ -3,11 +3,11 @@ package klassen;
 import java.io.Serializable;
 
 public class Spielfigur  implements Serializable {
-	private static final long serialVersionUID = 1L; 
- 
- 
-	private eFarben farbe;
-	private int figurId;
+	private static final long serialVersionUID = 1L;
+	 
+	 
+	private FarbEnum farbe;
+	private int id;
 	private Spielfeld feld;
 	private Spieler player;
  
@@ -16,8 +16,8 @@ public class Spielfigur  implements Serializable {
 	 * Der Konstruktor
 	 * @param farbe ist die Farbe der Spielfigur
 	 */
-	public Spielfigur(eFarben farbe, int figurId, Spielfeld feld) {
-		this.setFigurId(figurId);
+	public Spielfigur(FarbEnum farbe, int id, Spielfeld feld) {
+		this.setId(id);
 		this.setFarbe(farbe);
 		this.setFeld(feld);
 		this.setPlayer(player);
@@ -29,28 +29,29 @@ public class Spielfigur  implements Serializable {
 	 * @param figurID ist die Spielfigur ID eines Spielers
 	 */
 	// -------Setter & Getter-----------
-	public void setFigurId(int figurId) {
-		if(figurId>=1&&figurId<=4){
-			this.figurId = figurId;
+	public void setId(int id) {
+		if(id>=0&&id<=3){
+			this.id = id;
 		}
 		else{
 			throw new RuntimeException("Id darf nur von 1 bis 4 sein !");
 		}
+		
 	}
 	
 	/**
 	 * Die Figur ID des jeweiligen Spielers wird zurueck gegeben
 	 * @return figurID ist die Spielfigur ID eines Spielers
 	 */
-	public int getFigurId() {
-		return figurId;
+	public int getId() {
+		return id;
 	}
 	
 	/**
 	 * die Farbe der Spielfigur wird zurueck gegeben
 	 * @return farbe ist die Farbe der Spielfigur
 	 */
-	public eFarben getFarbe() {
+	public FarbEnum getFarbe() {
 		return farbe;
 	}
 	
@@ -58,7 +59,7 @@ public class Spielfigur  implements Serializable {
 	 * die Farbe der Spielfigur wird gesetzt
 	 * @param farbe ist die Farbe der Spielfigur
 	 */
-	public void setFarbe(eFarben farbe){
+	public void setFarbe(FarbEnum farbe){
 		if(farbe==null){
 			throw new RuntimeException("Eine Figur muss ein Farbe haben!");
 		}
@@ -118,7 +119,7 @@ public class Spielfigur  implements Serializable {
 	public String toString() {
 		return 
 				("Farbe: " + getFarbe() + 
-				" | "+ "ID: "+ getFigurId()
+				" | "+ "ID: "+ getId()
 //				+" --- "+"Position: "+ getFeld()//.getId()     // .getId() nicht kommentieren wen stack overflow kommt
 				);			
 	}

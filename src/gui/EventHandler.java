@@ -1,5 +1,7 @@
 package gui;
 
+import interfaces.iBediener;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,9 +23,11 @@ public class EventHandler implements ActionListener{
 	 Spieler3AuswahlDialog spieler3AuswahlDialog;
 	 Spieler4AuswahlDialog spieler4AuswahlDialog;
 	 GuiSpielbrett guiSpielbrett;
+	 iBediener b;
+	 MenuTop top;
+	 MenuDialogLaden menuDialog;
 	 
-//	 Spiel play;
-//	 Spieler sp;
+
 		
 	
 	
@@ -47,6 +51,14 @@ public class EventHandler implements ActionListener{
 		}
 		public EventHandler(GuiSpielbrett guiSpielbrett) {
 			this.guiSpielbrett=guiSpielbrett;
+		}
+		
+		public EventHandler(MenuTop top){
+			this.top=top;
+		}
+		
+		public EventHandler(MenuDialogLaden menuDialog){
+			this.menuDialog=menuDialog;
 		}
 		
 	
@@ -170,24 +182,121 @@ public class EventHandler implements ActionListener{
 						spieler4AuswahlDialog.getSpieler3(),spieler4AuswahlDialog);
 			}
 				
-			
-			
-			
-			
-	}
-		}
-	
-	
-	
-	
-	public boolean hatButtonIcon(ActionEvent e){
-		JButton feld=(JButton) e.getSource();
+}
 		
-		if(feld.getIcon()!=null){
-			return true;
+		
+		else if(cmd.equals("wuerfeln")){
+			guiSpielbrett.getSpiel().wuerfeln();
+			guiSpielbrett.kiOderMensch();
+			
+			
+			if(guiSpielbrett.getSpiel().getWuerfelZahl()==1){
+				
+				guiSpielbrett.getDiceLabel().setIcon(guiSpielbrett.getDice1());
+				
+			}
+			
+			if(guiSpielbrett.getSpiel().getWuerfelZahl()==2){
+				
+				guiSpielbrett.getDiceLabel().setIcon(guiSpielbrett.getDice2());
+				
+			}
+			
+			if(guiSpielbrett.getSpiel().getWuerfelZahl()==3){
+				
+				guiSpielbrett.getDiceLabel().setIcon(guiSpielbrett.getDice3());
+				
+			}
+			if(guiSpielbrett.getSpiel().getWuerfelZahl()==4){
+				
+				guiSpielbrett.getDiceLabel().setIcon(guiSpielbrett.getDice4());
+				
+			}
+			if(guiSpielbrett.getSpiel().getWuerfelZahl()==5){
+				
+				guiSpielbrett.getDiceLabel().setIcon(guiSpielbrett.getDice5());
+				
+			}
+			if(guiSpielbrett.getSpiel().getWuerfelZahl()==6){
+				
+				guiSpielbrett.getDiceLabel().setIcon(guiSpielbrett.getDice6());
+				
+			}
+			
+		
+			else if(cmd.equals("laufen")){			
+				
+				guiSpielbrett.laufKi();
+				guiSpielbrett.getLaufen().setEnabled(false);
+				guiSpielbrett.getFertig().setEnabled(true);
+				for(JButton b:guiSpielbrett.getFelder()){	
+					b.setDisabledIcon(b.getIcon());
+				}
+				
+			
+			}
 		}
-		return false;
+		
+		
+		
+		else if(cmd.equals("feld")&&
+				guiSpielbrett.getFertig().isEnabled()==false&&
+				guiSpielbrett.hatButtonIcon(e)==true){
+			
+			guiSpielbrett.lauf(e);
+			guiSpielbrett.getFertig().setEnabled(true);
+			
+			for(JButton b:guiSpielbrett.getFelder()){	
+				b.setDisabledIcon(b.getIcon());
+			}
+
+//			gui.getWuerfeln().setEnabled(true);
+		}
+		
+
+		else if(cmd.equals("beenden")){
+			if(guiSpielbrett.getSpiel().ermittleGewinner()==true){
+				Object[] options = {"ok!"};
+				
+                JOptionPane.showOptionDialog(null,"Du hast Gewonnen", "Gratuliere, das Spiel ist zu Ende",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, 
+				null, options, options[0]);
+                
+				guiSpielbrett.getFertig().setEnabled(false);
+				guiSpielbrett.getLaufen().setEnabled(false);
+				guiSpielbrett.getWuerfeln().setEnabled(false);
+				guiSpielbrett.unsButton();
+				
+			} 
+		
+			guiSpielbrett.getSpiel().beenden();
+			guiSpielbrett.getFertig().setEnabled(false);
+//			gui.getWuerfeln().setEnabled(true);
+			guiSpielbrett.unsButton();
+			
+		}
+		
+
+		else if(cmd.equals("ser")){
+			new MenuSpielSpeichern(MenuSpielSpeichern.ser);
+		}
+		else if(cmd.equals("csv")){
+			new MenuSpielSpeichern(MenuSpielSpeichern.csv);
+		}
+		else if(cmd.equals("pdf")){
+			new MenuSpielSpeichern(MenuSpielSpeichern.pdf);
+		}
+		
+
+		
+		
+		
+		
+		
+		
+		
 	}
+		
 	
 
 }

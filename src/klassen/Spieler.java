@@ -6,16 +6,17 @@ import java.util.ArrayList;
 
 
 public class Spieler implements Serializable {
-	private static final long serialVersionUID = 1L; 
- 
+	private static final long serialVersionUID = 1L;
+	 
 	private String name;
-	private eFarben farbe;
+	private FarbEnum farbe;
 	private Wuerfel wuerfel;
 	private ArrayList <Spielfigur> figurlist;
 	private int letzterWurf;
 	private boolean hatBereitsGewuerfelt = false;
 	private KI ki;
 	private Spielfigur figur;
+	
  
 	/**
 	 * Der Konstruktor der Klasse
@@ -23,7 +24,7 @@ public class Spieler implements Serializable {
 	 * @param name ist der Name des Spielers
 	 * @param farbe ist die Spielfigurfarbe des Spielers
 	 */ 
-	public Spieler(String name, eFarben farbe,KI ki) {
+	public Spieler(String name, FarbEnum farbe,KI ki) {
 		this.setName(name);
 		this.setFarbe(farbe);
 		this.setKi(ki);
@@ -31,8 +32,6 @@ public class Spieler implements Serializable {
 		
 		figurlist = new ArrayList<Spielfigur>();
 		hinzufuegen();
-		
-		
 	}
 	
 	public KI getKi() {
@@ -44,7 +43,7 @@ public class Spieler implements Serializable {
 	}
 
 	public void hinzufuegen(){
-		for(int i=1; i<=4; i++){
+		for(int i=0; i<=3; i++){
 	   		figurlist.add(new Spielfigur(this.getFarbe(), i, null));
 	   	}
 	}
@@ -71,71 +70,7 @@ public class Spieler implements Serializable {
 		hatBereitsGewuerfelt = hatGewuerfelt;
 	}
 	
-	/**
-	 * Methode um zu sehen ob die Farbe schon von jemand anderen gewaehlt wurde
-	 * @param farbe gewahlte Farbe eines Spielers
-	 * @return boolsche Antwort
-	 */
-	public boolean istFarbeFrei(eFarben farbe){
-		if (this.getFarbe()==farbe){
-			return false;
-	 	}
-		
-		else{
-			return true;
-		}
-	}
- 
 
- 
-	/**
-	 * Spieler kann seine Farbe auswaehlen
-	 * @param farbe die gewaehlte farbe
-	 */
-	public void farbeWaehlen(eFarben farbe){
-		
-		if (farbe==eFarben.BLAU){
-			if(istFarbeFrei(farbe)==true){
-				this.setFarbe(eFarben.BLAU);
-			}
-		} 
-		
-		else{
-			throw new RuntimeException("Farbe Blau schon vergeben !");
-		}
-	 
-		if (farbe==eFarben.GELB){
-			if(istFarbeFrei(farbe)==true){
-				this.setFarbe(eFarben.GELB);
-			}
-		} 
-		
-		else{
-			throw new RuntimeException("Farbe Gelb schon vergeben !");
-		}
-	 
-		if (farbe==eFarben.GRUEN){
-			if(istFarbeFrei(farbe)==true){
-				this.setFarbe(eFarben.GRUEN);
-			}
-		} 
-		
-		else{
-			throw new RuntimeException("Farbe Gruen schon vergeben !");
-		}
-		
-		if (farbe==eFarben.ROT){
-			if(istFarbeFrei(farbe)==true){
-				this.setFarbe(eFarben.ROT);
-			}
-		} 
-		
-		else{
-			throw new RuntimeException("Farbe Rot schon vergeben !");
-		}
-	}
-
- 
  
 	//-------- Getter & Setter ---------
 	
@@ -159,10 +94,10 @@ public class Spieler implements Serializable {
 	}
 
 	/**
-	 * die Farbe der Spieler wird zurueck gegeben
-	 * @return farbe ist die Farbe eines Spielers
+	 * die Farbe der Spielfigur wird zurueck gegeben
+	 * @return farbe ist die Farbe einer Spielfigur
 	 */
-	public eFarben getFarbe() {
+	public FarbEnum getFarbe() {
 		return farbe;
 	}
  
@@ -170,7 +105,7 @@ public class Spieler implements Serializable {
 	 * die Farbe der Spielfigur wird gesetzt
 	 * @param farbe ist die Farbe einer Spielfigur
 	 */
-	public void setFarbe(eFarben farbe) {
+	public void setFarbe(FarbEnum farbe) {
 		if(farbe==null){
 			throw new RuntimeException("Waehle eine Farbe !");
 		}

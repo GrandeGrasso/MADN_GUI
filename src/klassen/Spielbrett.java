@@ -6,8 +6,8 @@ import java.util.*;
 
 
 public class Spielbrett implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+private static final long serialVersionUID = 1L;
+	
 	private ArrayList <Spielfeld> weg;
 	
 	private ArrayList <Spielfeld> startRot;
@@ -22,11 +22,13 @@ public class Spielbrett implements Serializable {
 	
 	private Spielfeld feld;
 
+
 	/**
      * Der Konstruktor der Klasse Spielbrett
      * Es werden ArrayListen erzeugt
      * Es werden die Start/Endboxen erzeugt und der Weg
      */
+	
 	public Spielbrett(){
 		
 		weg=new ArrayList <Spielfeld>();
@@ -49,15 +51,6 @@ public class Spielbrett implements Serializable {
 		endGruen();
 		endGelb=new ArrayList <Spielfeld>();
 		endGelb();
-		
-		
-//		weg.addAll(10, endBlau);
-//		weg.addAll(24, endGruen);
-//		weg.addAll(38, endGelb);
-//		weg.addAll(52, endRot);
-//		weg.addAll(weg);
-		
-		
 	}
 	
 	/**
@@ -68,7 +61,6 @@ public class Spielbrett implements Serializable {
 	   		String id = ""+i;
 	   	 	weg.add(new Spielfeld(null, id));
 	   	}
-	   	
 	}
 	
 	/**
@@ -78,7 +70,7 @@ public class Spielbrett implements Serializable {
 	public void startRot(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "S"+i ;
-	   	 	startRot.add(new Spielfeld(eFarben.ROT, id));
+	   	 	startRot.add(new Spielfeld(FarbEnum.ROT, id));
 	   	}
 	}
 	
@@ -88,7 +80,7 @@ public class Spielbrett implements Serializable {
 	public void startBlau(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "S"+i;
-	   		startBlau.add(new Spielfeld(eFarben.BLAU, id));
+	   		startBlau.add(new Spielfeld(FarbEnum.BLAU, id));
 	   	}
 	}
 	
@@ -98,7 +90,7 @@ public class Spielbrett implements Serializable {
 	public void startGruen(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "S"+i;
-	   		startGruen.add(new Spielfeld(eFarben.GRUEN, id));	 
+	   		startGruen.add(new Spielfeld(FarbEnum.GRUEN, id));	 
 	   		}
 	}
 	
@@ -108,7 +100,7 @@ public class Spielbrett implements Serializable {
 	public void startGelb(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "S"+i ;
-	   		startGelb.add(new Spielfeld(eFarben.GELB, id));	 
+	   		startGelb.add(new Spielfeld(FarbEnum.GELB, id));	 
 	   		}
 	}
 	//-------------------------------------------
@@ -121,7 +113,7 @@ public class Spielbrett implements Serializable {
 	public void endRot(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "E"+i;
-	   		endRot.add(new Spielfeld(eFarben.ROT, id));	  
+	   		endRot.add(new Spielfeld(FarbEnum.ROT, id));	  
 	   	}
 	}
 	
@@ -131,7 +123,7 @@ public class Spielbrett implements Serializable {
 	public void endBlau(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "E"+i;
-	   		endBlau.add(new Spielfeld(eFarben.BLAU, id));	 
+	   		endBlau.add(new Spielfeld(FarbEnum.BLAU, id));	 
 	   	}
 	}
 	
@@ -141,7 +133,7 @@ public class Spielbrett implements Serializable {
 	public void endGruen(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "E"+i;
-	   		endGruen.add(new Spielfeld(eFarben.GRUEN, id));	 
+	   		endGruen.add(new Spielfeld(FarbEnum.GRUEN, id));	 
 	   	}
 	}
 	
@@ -151,7 +143,7 @@ public class Spielbrett implements Serializable {
 	public void endGelb(){
 	   	for(int i=1; i<=4; i++){
 	   		String id = "E"+i;
-	   		endGelb.add(new Spielfeld(eFarben.GELB, id));	   
+	   		endGelb.add(new Spielfeld(FarbEnum.GELB, id));	   
 	   	}	
 	   	
 	}
@@ -337,6 +329,7 @@ public class Spielbrett implements Serializable {
 		"End_Gruen Liste: \n"+ endGruen + "\n"+"\n"+
 		"End_Gelb Liste: \n"+ endGelb );
 	}
+
 
 	
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class KI_Defensiv extends KI implements Serializable {
 	private static final long serialVersionUID = 1L;
- 
+	 
 //	private boolean kannSchlagen = false;
 //	private boolean kannLaufen = false;
 //	private boolean kannRaus = false;
@@ -24,7 +24,7 @@ public class KI_Defensiv extends KI implements Serializable {
 	 */
  
 	@Override
-	public Spielfigur ErmittleZuSpielendeFigur(Spieler aktuellerSpieler, int letzterWurf ){
+	public Spielfigur ermittleFigur(){
 		Spielfigur ergebnis = null;
 		Spielfigur schlaeger = ErmittleWertVonKannSchlagen();
 		Spielfigur laeufer = ErmittleKannLaufenUndWer();
